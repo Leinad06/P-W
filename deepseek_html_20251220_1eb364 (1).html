@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Sistema Unità Militari - Call To Leadership [RP]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(#393939, #686868);
+            font-family: 'Georgia', serif;
+            color: rgb(193, 193, 193);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        header {
+            height: 60px;
+            background-color: #333;
+            border-bottom: solid 6px #6c6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .quote {
+            color: rgb(193, 193, 193);
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+        
+        /* Sidebar */
+        .sidebar-container {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 280px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, #979797, #8c8c8c 100%);
+            overflow-y: auto;
+            z-index: 900;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            padding: 20px 0;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #6D5540;
+            font-weight: bold;
+            margin: 15px 20px 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #6c6c40;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-link {
+            display: block;
+            color: #e41c1c;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e41c1c;
+            padding-left: 24px;
+        }
+        
+        .sidebar-sub {
+            padding-left: 40px;
+            font-size: 0.9rem;
+            color: #6D5540;
+        }
+        
+        /* Scrollbar personalizzata */
+        .sidebar-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb {
+            background: #6c6c40;
+            border-radius: 4px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb:hover {
+            background: #7d7f51;
+        }
+        
+        /* Contenuto principale */
+        .main-content {
+            margin-left: 280px;
+            margin-top: 60px;
+            padding: 30px;
+            min-height: calc(100vh - 60px);
+        }
+        
+        .page-header {
+            background-color: #333;
+            color: #b6afaf;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            font-size: 1.4rem;
+            text-align: center;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Sezione Calcolatore */
+        .calculator-section {
+            background-color: rgba(51, 51, 51, 0.9);
+            border: 2px solid #6c6c40;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .calculator-title {
+            color: #e41c1c;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .calculator-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .budget-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .budget-input label {
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .budget-input input {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #6c6c40;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+            width: 150px;
+        }
+        
+        .calculator-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calculator-btn {
+            padding: 8px 16px;
+            background-color: #6c6c40;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .calculator-btn:hover {
+            background-color: #7d7f51;
+        }
+        
+        .calculator-btn.clear {
+            background-color: #e41c1c;
+        }
+        
+        .calculator-btn.clear:hover {
+            background-color: #ff3333;
+        }
+        
+        .calculator-summary {
+            background-color: rgba(108, 108, 64, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            text-align: center;
+        }
+        
+        .summary-label {
+            color: #b6afaf;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .summary-value {
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .summary-value.total {
+            color: #e41c1c;
+            font-size: 1.8rem;
+        }
+        
+        .budget-status {
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .budget-status.within {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+        
+        .budget-status.exceeded {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Contenuto principale */
+        .info-box {
+            background-color: rgba(51, 51, 51, 0.9);
+            border: 2px solid #6c6c40;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-title {
+            color: #e41c1c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background-color: rgba(108, 108, 64, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(108, 108, 64, 0.5);
+        }
+        
+        .info-card-title {
+            color: #d4af37;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+        
+        .info-card-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .info-card-content strong {
+            color: #e41c1c;
+        }
+        
+        .unit-category {
+            margin-bottom: 50px;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 8px;
+            padding: 25px;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-header {
+            font-size: 2.2rem;
+            color: #6c6c40;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #7d7f51;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            position: relative;
+            text-align: center;
+        }
+        
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #6c6c40, transparent);
+        }
+        
+        .unit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .unit-card {
+            background-color: rgba(68, 68, 68, 0.7);
+            border: 1px solid #6c6c40;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: #e41c1c;
+        }
+        
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c6c40, transparent);
+        }
+        
+        .unit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(108, 108, 64, 0.5);
+        }
+        
+        .unit-name {
+            color: #d4af37;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .unit-price {
+            background-color: #6c6c40;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .unit-type {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .unit-type.land {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+        }
+        
+        .unit-type.naval {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+        }
+        
+        .unit-type.support {
+            background-color: rgba(155, 89, 182, 0.2);
+            color: #9b59b6;
+        }
+        
+        .unit-description {
+            font-size: 1rem;
+            color: #b6afaf;
+            line-height: 1.7;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            border-left: 3px solid #6c6c40;
+            font-style: italic;
+        }
+        
+        .unit-stats {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(108, 108, 64, 0.3);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            color: #d4af37;
+        }
+        
+        .unit-stats strong {
+            color: #e41c1c;
+        }
+        
+        /* Controlli quantità unità */
+        .unit-controls {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #6c6c40;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #7d7f51;
+        }
+        
+        .quantity-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid #6c6c40;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .unit-total {
+            font-weight: bold;
+            color: #d4af37;
+            font-size: 1.1rem;
+        }
+        
+        /* Unit icon system */
+        .unit-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .icon-infantry {
+            background-color: #3498db;
+            border-radius: 50%;
+        }
+        
+        .icon-cavalry {
+            background-color: #e74c3c;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .icon-artillery {
+            background-color: #f39c12;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .icon-naval {
+            background-color: #2ecc71;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .icon-support {
+            background-color: #9b59b6;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+        
+        .icon-commander {
+            background-color: #e41c1c;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            border-top: solid 6px #6c6c40;
+            color: #b6afaf;
+            padding: 20px;
+            margin-top: 50px;
+            margin-left: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-style: italic;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .separator {
+            color: #6c6c40;
+        }
+        
+        footer a {
+            color: #e41c1c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #ff3333;
+            text-decoration: underline;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #6c6c40;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #7d7f51;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar-container {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            footer {
+                margin-left: 240px;
+            }
+            
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-container {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                max-height: 50vh;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            footer {
+                margin-left: 0;
+            }
+            
+            .unit-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .category-header {
+                font-size: 1.8rem;
+            }
+            
+            .sidebar-title {
+                font-size: 1.1rem;
+            }
+            
+            .sidebar-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .unit-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .unit-price {
+                align-self: flex-start;
+            }
+            
+            .unit-controls {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+            
+            .quantity-controls {
+                justify-content: center;
+            }
+            
+            .unit-total {
+                text-align: center;
+            }
+        }
+        
+        /* Note box */
+        .note-box {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .note-box strong {
+            color: #d4af37;
+        }
+        
+        /* Export section */
+        .export-section {
+            background-color: rgba(51, 51, 51, 0.9);
+            border: 2px solid #6c6c40;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .export-title {
+            color: #e41c1c;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .export-btn {
+            padding: 10px 20px;
+            background-color: #6c6c40;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .export-btn:hover {
+            background-color: #7d7f51;
+        }
+        
+        .export-btn.copy {
+            background-color: #3498db;
+        }
+        
+        .export-btn.copy:hover {
+            background-color: #2980b9;
+        }
+        
+        .export-btn.save {
+            background-color: #2ecc71;
+        }
+        
+        .export-btn.save:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <header id="inizio">
+        <div class="header-content">
+            <span class="quote">"There is no way to victory; victory is the only way." - Winston Churchill</span>
+        </div>
+    </header>
+
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <div class="sidebar-title">Unità Militari</div>
+            
+            <div class="sidebar-section">
+                <a href="#calculator" class="sidebar-link">Calcolatore Esercito</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#info-unita" class="sidebar-link">Informazioni Unità</a>
+                <a href="#terminologia" class="sidebar-link sidebar-sub">• Terminologia</a>
+                <a href="#costi" class="sidebar-link sidebar-sub">• Sistema Costi</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#truppe-terra" class="sidebar-link">Truppe di Terra</a>
+                <a href="#fanteria-base" class="sidebar-link sidebar-sub">• Fanteria Base</a>
+                <a href="#artiglieria" class="sidebar-link sidebar-sub">• Artiglieria</a>
+                <a href="#cavalleria" class="sidebar-link sidebar-sub">• Cavalleria</a>
+                <a href="#unita-speciali" class="sidebar-link sidebar-sub">• Unità Speciali</a>
+                <a href="#supporto" class="sidebar-link sidebar-sub">• Supporto</a>
+                <a href="#comando" class="sidebar-link sidebar-sub">• Comando</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#truppe-mare" class="sidebar-link">Truppe di Mare</a>
+                <a href="#navi-leggere" class="sidebar-link sidebar-sub">• Navi Leggere</a>
+                <a href="#navi-medie" class="sidebar-link sidebar-sub">• Navi Medie</a>
+                <a href="#navi-pesanti" class="sidebar-link sidebar-sub">• Navi Pesanti</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#riepilogo" class="sidebar-link">Riepilogo Generale</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#esporta" class="sidebar-link">Esporta Esercito</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            Sistema Unità Militari - Calcolatore Esercito
+        </div>
+        
+        <!-- CALCOLATORE ESERCITO -->
+        <div class="calculator-section" id="calculator">
+            <h2 class="calculator-title">Calcolatore del Tuo Esercito</h2>
+            
+            <div class="calculator-controls">
+                <div class="budget-input">
+                    <label for="budget">Budget Disponibile ($):</label>
+                    <input type="number" id="budget" value="1000000" min="0" step="1000">
+                </div>
+                
+                <div class="calculator-buttons">
+                    <button class="calculator-btn" id="updateBtn">Aggiorna Calcolo</button>
+                    <button class="calculator-btn clear" id="clearBtn">Azzera Tutto</button>
+                </div>
+            </div>
+            
+            <div class="calculator-summary">
+                <div class="summary-item">
+                    <div class="summary-label">Costo Totale Esercito</div>
+                    <div class="summary-value total" id="totalCost">$0</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">Unità Selezionate</div>
+                    <div class="summary-value" id="totalUnits">0</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">Budget Rimanente</div>
+                    <div class="summary-value" id="remainingBudget">$1,000,000</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">Percentuale Spesa</div>
+                    <div class="summary-value" id="spentPercentage">0%</div>
+                </div>
+            </div>
+            
+            <div id="budgetStatus" class="budget-status within">
+                Budget rispettato ✓
+            </div>
+        </div>
+        
+        <!-- Informazioni Unità -->
+        <div class="info-box" id="info-unita">
+            <h2 class="info-title">Informazioni sulle Unità</h2>
+            
+            <div class="info-content">
+                <div class="info-card" id="terminologia">
+                    <h3 class="info-card-title">Terminologia</h3>
+                    <div class="info-card-content">
+                        <p><strong>Battaglione:</strong> Equivale a <strong>250 truppe</strong>. È l'unità base per la fanteria e cavalleria.</p>
+                        <p><strong>Compagnia:</strong> Equivale a <strong>5 macchine da guerra</strong>. Usata per artiglieria e unità speciali.</p>
+                        <p><strong>Squadrone:</strong> Gruppo di <strong>5 unità specializzate</strong> per compiti specifici.</p>
+                        <p><strong>Nave singola:</strong> Ogni nave è considerata un'unità indipendente.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card" id="costi">
+                    <h3 class="info-card-title">Sistema di Costi</h3>
+                    <div class="info-card-content">
+                        <p>I prezzi sono indicati in <strong>$ (dollari)</strong> del gioco.</p>
+                        <p>I costi includono:</p>
+                        <ul>
+                            <li>Equipaggiamento base</li>
+                            <li>Addestramento iniziale</li>
+                            <li>Mantenimento per un periodo</li>
+                        </ul>
+                        <p>I costi di mantenimento sono calcolati separatamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TRUPPE DI TERRA -->
+        <div class="unit-category" id="truppe-terra">
+            <h2 class="category-header">Truppe di Terra</h2>
+            
+            <!-- Fanteria Base -->
+            <div class="unit-grid" id="fanteria-base">
+                <div class="unit-card" data-unit="milizie" data-price="32000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Milizie Armate con Spada
+                        </div>
+                        <div class="unit-price">$32.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Queste milizie sono le unità più deboli di tutto il gioco, ma se sono in gran quantità ad attacco/difesa faranno vedere di che pasta sono fatti.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Fanteria base • <strong>Armamento:</strong> Spade • <strong>Ruolo:</strong> Carne da macchio
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('milizie', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-milizie" value="0" min="0" onchange="updateUnitTotal('milizie')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('milizie', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-milizie">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="moschettieri" data-price="80000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Moschettieri
+                        </div>
+                        <div class="unit-price">$80.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Le unità base che tutti gli eserciti devono avere, sono le truppe di nicchia degli eserciti settecenteschi. Senza corazza e armati di un moschetto con baionetta, è sempre consigliato averne a dismisura di queste unità.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Fanteria base • <strong>Armamento:</strong> Moschetto con baionetta • <strong>Ruolo:</strong> Linea principale
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('moschettieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-moschettieri" value="0" min="0" onchange="updateUnitTotal('moschettieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('moschettieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-moschettieri">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="granatieri" data-price="128000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Granatieri
+                        </div>
+                        <div class="unit-price">$128.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Queste truppe sono armate di una sorta di bomba a mano, la quale esplode all'impatto creando una piccola ma letale esplosione.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Fanteria d'assalto • <strong>Armamento:</strong> Bombe a mano • <strong>Ruolo:</strong> Assalto frontale
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('granatieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-granatieri" value="0" min="0" onchange="updateUnitTotal('granatieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('granatieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-granatieri">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Artiglieria -->
+            <div class="note-box">
+                <strong>Nota:</strong> 1 Compagnia = 5 macchine da guerra
+            </div>
+            
+            <div class="unit-grid" id="artiglieria">
+                <div class="unit-card" data-unit="cannone" data-price="320000" data-type="compagnia">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-artillery"></span>
+                            Cannone
+                        </div>
+                        <div class="unit-price">$320.000</div>
+                    </div>
+                    <div class="unit-type land">Compagnia (5 unità)</div>
+                    <div class="unit-description">
+                        Sono utili macchine di assedio, possono distruggere agglomerati di truppe in pochi colpi, ma sfortunatamente non sono così tanto precise, ma sono facilmente movibili. Hanno una gittata che va dai 200 ai 300m massimo.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Artiglieria leggera • <strong>Gittata:</strong> 200-300m • <strong>Mobilità:</strong> Alta
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('cannone', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-cannone" value="0" min="0" onchange="updateUnitTotal('cannone')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('cannone', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-cannone">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="artiglieria" data-price="520000" data-type="compagnia">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-artillery"></span>
+                            Artiglieria
+                        </div>
+                        <div class="unit-price">$520.000</div>
+                    </div>
+                    <div class="unit-type land">Compagnia (5 unità)</div>
+                    <div class="unit-description">
+                        Usate per bombardare, rispetto ai cannoni le artiglierie sono sicuramente molto più potenti, ma pure più difficili da muovere, soprattutto nelle zone di alta montagna. Gittata massima di 5km.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Artiglieria pesante • <strong>Gittata:</strong> Fino a 5km • <strong>Mobilità:</strong> Bassa
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('artiglieria', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-artiglieria" value="0" min="0" onchange="updateUnitTotal('artiglieria')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('artiglieria', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-artiglieria">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cavalleria -->
+            <div class="unit-grid" id="cavalleria">
+                <div class="unit-card" data-unit="corazzieri" data-price="280000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Corazzieri
+                        </div>
+                        <div class="unit-price">$280.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Cavalleria pesante, equipaggiata di un'armatura pesante, pistole e spade. Sicuramente più lenta rispetto agli ussari, ma più letale e potente.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Cavalleria pesante • <strong>Armamento:</strong> Armatura pesante, pistole, spade • <strong>Ruolo:</strong> Carica pesante
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('corazzieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-corazzieri" value="0" min="0" onchange="updateUnitTotal('corazzieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('corazzieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-corazzieri">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="dragoni" data-price="176000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Dragoni
+                        </div>
+                        <div class="unit-price">$176.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Cavalleria media, equipaggiata di un'armatura media e una pistola, chiamata "Dragone", una specie di pistola di grandi dimensioni.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Cavalleria media • <strong>Armamento:</strong> Armatura media, pistola "Dragone" • <strong>Ruolo:</strong> Supporto mobile
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('dragoni', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-dragoni" value="0" min="0" onchange="updateUnitTotal('dragoni')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('dragoni', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-dragoni">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="lancieri" data-price="128000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Lancieri
+                        </div>
+                        <div class="unit-price">$128.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Cavalleria leggera, equipaggiata di una normale uniforme e una lancia.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Cavalleria leggera • <strong>Armamento:</strong> Uniforme, lancia • <strong>Ruolo:</strong> Ricognizione e attacchi rapidi
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('lancieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-lancieri" value="0" min="0" onchange="updateUnitTotal('lancieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('lancieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-lancieri">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unità Speciali -->
+            <div class="unit-grid" id="unita-speciali">
+                <div class="unit-card" data-unit="strumenti" data-price="120000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Truppe con Strumenti Musicali
+                        </div>
+                        <div class="unit-price">$120.000</div>
+                    </div>
+                    <div class="unit-type support">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Le truppe con gli strumenti, non fanno danno effettivo, infliggono però coraggio alle truppe alleate, soprattutto quando queste devono caricare, è sempre consigliato infatti di metterne un paio quando si va alla carica.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Supporto morale • <strong>Effetto:</strong> +Coraggio alle truppe • <strong>Ruolo:</strong> Supporto psicologico
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('strumenti', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-strumenti" value="0" min="0" onchange="updateUnitTotal('strumenti')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('strumenti', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-strumenti">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Supporto (Squadroni) -->
+            <div class="note-box">
+                <strong>Nota:</strong> 1 Squadrone = 5 unità specializzate
+            </div>
+            
+            <div class="unit-grid" id="supporto">
+                <div class="unit-card" data-unit="becchino" data-price="128000" data-type="squadrone">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-support"></span>
+                            Becchino di Guerra
+                        </div>
+                        <div class="unit-price">$128.000</div>
+                    </div>
+                    <div class="unit-type support">Squadrone (5 unità)</div>
+                    <div class="unit-description">
+                        Servono per seppellire i feriti e non far scatenare pestilenze tra i militari e i civili.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Supporto sanitario • <strong>Funzione:</strong> Sepoltura morti • <strong>Ruolo:</strong> Igiene campo
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('becchino', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-becchino" value="0" min="0" onchange="updateUnitTotal('becchino')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('becchino', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-becchino">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="esploratori" data-price="80000" data-type="squadrone">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-support"></span>
+                            Esploratori
+                        </div>
+                        <div class="unit-price">$80.000</div>
+                    </div>
+                    <div class="unit-type support">Squadrone (5 unità)</div>
+                    <div class="unit-description">
+                        Sono un gruppo di 5 unità, i quali devono essere mandati in esplorazione per studiare/capire le tattiche e l'esercito del nemico.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Ricognizione • <strong>Funzione:</strong> Esplorazione territorio • <strong>Ruolo:</strong> Intelligence
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('esploratori', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-esploratori" value="0" min="0" onchange="updateUnitTotal('esploratori')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('esploratori', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-esploratori">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="medici" data-price="80000" data-type="squadrone">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-support"></span>
+                            Medici
+                        </div>
+                        <div class="unit-price">$80.000</div>
+                    </div>
+                    <div class="unit-type support">Squadrone (5 unità)</div>
+                    <div class="unit-description">
+                        Sono un gruppo di 5 medici, i quali hanno il compito di curare i feriti di qualsiasi tipo. Ovviamente non possono attaccare e rimangono sempre nei campi dove si trovano i generali, le varie baracche per le truppe ecc.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Supporto sanitario • <strong>Funzione:</strong> Cura feriti • <strong>Ruolo:</strong> Assistenza medica
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('medici', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-medici" value="0" min="0" onchange="updateUnitTotal('medici')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('medici', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-medici">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="ingegneri" data-price="60000" data-type="squadrone">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-support"></span>
+                            Ingegneri
+                        </div>
+                        <div class="unit-price">$60.000</div>
+                    </div>
+                    <div class="unit-type support">Squadrone (5 unità)</div>
+                    <div class="unit-description">
+                        Sono un gruppo di 5 unità, le quali hanno il compito di riparare i ponti, strade e via dicendo per le battaglie.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Supporto logistico • <strong>Funzione:</strong> Riparazioni infrastrutture • <strong>Ruolo:</strong> Ingegneria
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('ingegneri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-ingegneri" value="0" min="0" onchange="updateUnitTotal('ingegneri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('ingegneri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-ingegneri">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="guastatori" data-price="60000" data-type="squadrone">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-support"></span>
+                            Guastatori
+                        </div>
+                        <div class="unit-price">$60.000</div>
+                    </div>
+                    <div class="unit-type support">Squadrone (5 unità)</div>
+                    <div class="unit-description">
+                        Persone che si occupano di indebolire le macchine d'assedio nemiche, le mura, distruggere le risorse e via dicendo.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Supporto offensivo • <strong>Funzione:</strong> Sabotaggio strutture • <strong>Ruolo:</strong> Demolizioni
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('guastatori', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-guastatori" value="0" min="0" onchange="updateUnitTotal('guastatori')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('guastatori', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-guastatori">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comando -->
+            <div class="unit-grid" id="comando">
+                <div class="unit-card" data-unit="generale" data-price="130000" data-type="singola">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-commander"></span>
+                            Generale Livello 1
+                        </div>
+                        <div class="unit-price">$130.000</div>
+                    </div>
+                    <div class="unit-type support">Singola unità</div>
+                    <div class="unit-description">
+                        Utili per fornire bonus di comando alle proprie divisioni.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Comando • <strong>Effetto:</strong> Bonus alle divisioni • <strong>Ruolo:</strong> Leadership
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('generale', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-generale" value="0" min="0" onchange="updateUnitTotal('generale')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('generale', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-generale">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TRUPPE DI MARE -->
+        <div class="unit-category" id="truppe-mare">
+            <h2 class="category-header">Truppe di Mare</h2>
+            
+            <div class="note-box">
+                <strong>Avvertenze:</strong> Il prezzo è per nave singola. Tutte le navi, eccetto quella da trasporto, sono armate con cannoni.
+            </div>
+            
+            <!-- Navi Leggere -->
+            <div class="unit-grid" id="navi-leggere">
+                <div class="unit-card" data-unit="galea" data-price="130000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Galea
+                        </div>
+                        <div class="unit-price">$130.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Le Galee, compongono la principale forza d'attacco per le marine dell'epoca. Armate con una fila di cannone per lato, per 6 cannoni a fila. Non sono sicuramente le navi più potenti, ma quelle più economiche e con ottime capacità di dare fastidio e distrarre i nemici.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 6 per lato • <strong>Ruolo:</strong> Attacco principale economico
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('galea', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-galea" value="0" min="0" onchange="updateUnitTotal('galea')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('galea', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-galea">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="brigantino" data-price="200000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Brigantino
+                        </div>
+                        <div class="unit-price">$200.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Unità navale leggera, principale componente degli eserciti navali, di piccola stazza, è utilissima per rapide incursioni o per tagliare rapidamente la ritirata alla flotta avversaria, in un gruppo superiore alle dieci possono facilmente avere la meglio su qualsiasi unità marittima. Sono armate con 2 file di cannoni per lato, ognuna da 8 cannoni.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 16 per lato (2 file da 8) • <strong>Ruolo:</strong> Incursioni rapide
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('brigantino', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-brigantino" value="0" min="0" onchange="updateUnitTotal('brigantino')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('brigantino', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-brigantino">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="goletta" data-price="80000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Goletta
+                        </div>
+                        <div class="unit-price">$80.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        La goletta è un'imbarcazione a vela fornita di bompresso e due alberi, leggermente inclinati verso poppa, armati con vele auriche. Ha 10 cannoni massimo sul ponte. Non è molto potente ed è molto fragile, ma abbastanza veloce.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> Max 10 • <strong>Ruolo:</strong> Pattugliamento veloce
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('goletta', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-goletta" value="0" min="0" onchange="updateUnitTotal('goletta')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('goletta', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-goletta">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navi Medie -->
+            <div class="unit-grid" id="navi-medie">
+                <div class="unit-card" data-unit="fregata" data-price="800000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Fregata
+                        </div>
+                        <div class="unit-price">$800.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        La fregata è dotata di un unico ponte completo di batteria e adibita a lavori di pattuglia e di scorta piuttosto che ad azioni militari. Su queste navi è scomparso anche l'albero di bonaventura, rendendo così queste unità ancor più agili nel risalire il vento. Per finire possono essere equipaggiate 20-22 a 40-44 cannoni oppure addirittura da 48-54 cannoni (se li prendete da 48-58, pagate 200k in più).
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave media • <strong>Cannoni:</strong> 20-54 • <strong>Ruolo:</strong> Pattuglia e scorta
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('fregata', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-fregata" value="0" min="0" onchange="updateUnitTotal('fregata')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('fregata', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-fregata">$0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navi Pesanti -->
+            <div class="unit-grid" id="navi-pesanti">
+                <div class="unit-card" data-unit="galeone" data-price="800000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Galeone
+                        </div>
+                        <div class="unit-price">$800.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Un poderoso veliero da guerra, progettato per affrontare la navigazione oceaniche. Era composto da un castello di prua più basso, un castello di poppa di forma squadrata e uno scafo allungato. È armato con 4 file di cannoni per lato, ognuna di esse contiene circa 12 cannoni, ciò implica che abbia una buona potenza di fuoco. Uno dei maggiori svantaggi è che non può muoversi e combattere senza svantaggi negli stretti (Bosforo, Gibilterra, lo stretto di Danimarca).
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 48 per lato (4 file da 12) • <strong>Ruolo:</strong> Nave da guerra oceanica
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('galeone', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-galeone" value="0" min="0" onchange="updateUnitTotal('galeone')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('galeone', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-galeone">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="vascello" data-price="1600000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Vascello
+                        </div>
+                        <div class="unit-price">$1.600.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Il vascello è tipo di nave da guerra derivato dal galeone, con circa 40 m di lunghezza e 11m di larghezza con un peso di 200/300 tonnellate. Sono immense navi; potenti ma lente e non adatte a combattimenti in luoghi ristretti o piccoli. Rispetto al galeone hanno 5 file di cannoni per lato e ogni fila ha 5 cannoni.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 25 per lato (5 file da 5) • <strong>Ruolo:</strong> Nave da battaglia principale
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('vascello', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-vascello" value="0" min="0" onchange="updateUnitTotal('vascello')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('vascello', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-vascello">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RIEPILOGO -->
+        <div class="info-box" id="riepilogo">
+            <h2 class="info-title">Riepilogo Generale</h2>
+            
+            <div class="info-content">
+                <div class="info-card">
+                    <h3 class="info-card-title">Truppe di Terra</h3>
+                    <div class="info-card-content">
+                        <p><strong>Totale unità:</strong> 13 tipi</p>
+                        <p><strong>Categorie:</strong></p>
+                        <ul>
+                            <li>Fanteria base: 3 unità</li>
+                            <li>Artiglieria: 2 unità</li>
+                            <li>Cavalleria: 3 unità</li>
+                            <li>Unità speciali: 1 unità</li>
+                            <li>Supporto: 5 squadroni</li>
+                            <li>Comando: 1 generale</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-card-title">Truppe di Mare</h3>
+                    <div class="info-card-content">
+                        <p><strong>Totale navi:</strong> 6 tipi</p>
+                        <p><strong>Categorie:</strong></p>
+                        <ul>
+                            <li>Navi leggere: 3 unità</li>
+                            <li>Navi medie: 1 unità</li>
+                            <li>Navi pesanti: 2 unità</li>
+                        </ul>
+                        <p><strong>Prezzo totale flotta base:</strong> $3,610,000</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-card-title">Sistema di Unità</h3>
+                    <div class="info-card-content">
+                        <p><strong>Battaglione:</strong> 250 truppe</p>
+                        <p><strong>Compagnia:</strong> 5 macchine da guerra</p>
+                        <p><strong>Squadrone:</strong> 5 unità specializzate</p>
+                        <p><strong>Nave:</strong> Singola unità</p>
+                        <p><strong>Generale:</strong> Singola unità di comando</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="info-card-title">Statistiche Veloci</h3>
+                    <div class="info-card-content">
+                        <p><strong>Unità più economica (terra):</strong> Milizie ($32.000)</p>
+                        <p><strong>Unità più costosa (terra):</strong> Artiglieria ($520.000)</p>
+                        <p><strong>Nave più economica:</strong> Goletta ($80.000)</p>
+                        <p><strong>Nave più costosa:</strong> Vascello ($1.600.000)</p>
+                        <p><strong>Totale tipi unità:</strong> 19</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <strong>Nota importante:</strong> Questi prezzi sono per l'acquisto iniziale. I costi di mantenimento e rifornimento sono calcolati separatamente durante il gioco. Ogni unità ha caratteristiche specifiche che le rendono adatte a situazioni tattiche diverse.
+            </div>
+        </div>
+        
+        <!-- ESPORTA ESERCITO -->
+        <div class="export-section" id="esporta">
+            <h2 class="export-title">Esporta il Tuo Esercito</h2>
+            <div class="export-buttons">
+                <button class="export-btn copy" onclick="copyArmyToClipboard()">Copia negli Appunti</button>
+                <button class="export-btn save" onclick="saveArmyToFile()">Salva come File</button>
+                <button class="export-btn" onclick="printArmy()">Stampa Riepilogo</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-item">
+            <p><i>by D.F. & S.J.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <p><i>Questa pagina è stata creata il 27/05/2024.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.html"><i>Licenza</i></a>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <p><i>Entra nel nostro Server:</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="#inizio">Torna all'inizio</a>
+        </div>
+    </footer>
+
+    <a href="#inizio" class="back-to-top">↑</a>
+
+    <script>
+        // Sistema di unità con prezzi
+        const units = {
+            // Fanteria base
+            'milizie': { name: 'Milizie Armate con Spada', price: 32000, type: 'Battaglione' },
+            'moschettieri': { name: 'Moschettieri', price: 80000, type: 'Battaglione' },
+            'granatieri': { name: 'Granatieri', price: 128000, type: 'Battaglione' },
+            
+            // Artiglieria
+            'cannone': { name: 'Cannone', price: 320000, type: 'Compagnia' },
+            'artiglieria': { name: 'Artiglieria', price: 520000, type: 'Compagnia' },
+            
+            // Cavalleria
+            'corazzieri': { name: 'Corazzieri', price: 280000, type: 'Battaglione' },
+            'dragoni': { name: 'Dragoni', price: 176000, type: 'Battaglione' },
+            'lancieri': { name: 'Lancieri', price: 128000, type: 'Battaglione' },
+            
+            // Unità speciali
+            'strumenti': { name: 'Truppe con Strumenti Musicali', price: 120000, type: 'Battaglione' },
+            
+            // Supporto (squadroni)
+            'becchino': { name: 'Becchino di Guerra', price: 128000, type: 'Squadrone' },
+            'esploratori': { name: 'Esploratori', price: 80000, type: 'Squadrone' },
+            'medici': { name: 'Medici', price: 80000, type: 'Squadrone' },
+            'ingegneri': { name: 'Ingegneri', price: 60000, type: 'Squadrone' },
+            'guastatori': { name: 'Guastatori', price: 60000, type: 'Squadrone' },
+            
+            // Comando
+            'generale': { name: 'Generale Livello 1', price: 130000, type: 'Singola' },
+            
+            // Navi
+            'galea': { name: 'Galea', price: 130000, type: 'Nave' },
+            'brigantino': { name: 'Brigantino', price: 200000, type: 'Nave' },
+            'goletta': { name: 'Goletta', price: 80000, type: 'Nave' },
+            'fregata': { name: 'Fregata', price: 800000, type: 'Nave' },
+            'galeone': { name: 'Galeone', price: 800000, type: 'Nave' },
+            'vascello': { name: 'Vascello', price: 1600000, type: 'Nave' }
+        };
+
+        // Stato corrente dell'esercito
+        let army = {};
+        
+        // Inizializza l'esercito
+        function initializeArmy() {
+            for (const unitId in units) {
+                army[unitId] = 0;
+            }
+        }
+        
+        // Formatta numero con separatore migliaia
+        function formatNumber(num) {
+            return new Intl.NumberFormat('it-IT').format(num);
+        }
+        
+        // Calcola il totale dell'esercito
+        function calculateTotal() {
+            let totalCost = 0;
+            let totalUnits = 0;
+            
+            for (const unitId in army) {
+                const quantity = army[unitId];
+                if (quantity > 0) {
+                    totalCost += quantity * units[unitId].price;
+                    totalUnits += quantity;
+                    
+                    // Aggiorna il totale per unità
+                    const unitTotal = quantity * units[unitId].price;
+                    document.getElementById(`total-${unitId}`).textContent = `$${formatNumber(unitTotal)}`;
+                } else {
+                    document.getElementById(`total-${unitId}`).textContent = '$0';
+                }
+            }
+            
+            return { totalCost, totalUnits };
+        }
+        
+        // Aggiorna il riepilogo
+        function updateSummary() {
+            const { totalCost, totalUnits } = calculateTotal();
+            const budget = parseInt(document.getElementById('budget').value) || 1000000;
+            const remaining = budget - totalCost;
+            const percentage = budget > 0 ? Math.round((totalCost / budget) * 100) : 0;
+            
+            // Aggiorna i valori
+            document.getElementById('totalCost').textContent = `$${formatNumber(totalCost)}`;
+            document.getElementById('totalUnits').textContent = formatNumber(totalUnits);
+            document.getElementById('remainingBudget').textContent = `$${formatNumber(remaining)}`;
+            document.getElementById('spentPercentage').textContent = `${percentage}%`;
+            
+            // Aggiorna lo stato del budget
+            const budgetStatus = document.getElementById('budgetStatus');
+            if (remaining >= 0) {
+                budgetStatus.textContent = `Budget rispettato ✓ ($${formatNumber(remaining)} disponibili)`;
+                budgetStatus.className = 'budget-status within';
+            } else {
+                budgetStatus.textContent = `Budget superato di $${formatNumber(Math.abs(remaining))}!`;
+                budgetStatus.className = 'budget-status exceeded';
+            }
+        }
+        
+        // Cambia la quantità di un'unità
+        function changeQuantity(unitId, delta) {
+            const input = document.getElementById(`qty-${unitId}`);
+            let currentValue = parseInt(input.value) || 0;
+            let newValue = currentValue + delta;
+            
+            if (newValue < 0) newValue = 0;
+            
+            input.value = newValue;
+            army[unitId] = newValue;
+            updateUnitTotal(unitId);
+            updateSummary();
+        }
+        
+        // Aggiorna il totale per unità
+        function updateUnitTotal(unitId) {
+            const input = document.getElementById(`qty-${unitId}`);
+            const quantity = parseInt(input.value) || 0;
+            army[unitId] = quantity;
+            
+            const unitTotal = quantity * units[unitId].price;
+            document.getElementById(`total-${unitId}`).textContent = `$${formatNumber(unitTotal)}`;
+            updateSummary();
+        }
+        
+        // Azzera tutto
+        function clearAll() {
+            for (const unitId in army) {
+                army[unitId] = 0;
+                document.getElementById(`qty-${unitId}`).value = 0;
+                document.getElementById(`total-${unitId}`).textContent = '$0';
+            }
+            updateSummary();
+        }
+        
+        // Copia l'esercito negli appunti
+        function copyArmyToClipboard() {
+            const { totalCost, totalUnits } = calculateTotal();
+            const budget = parseInt(document.getElementById('budget').value) || 1000000;
+            const remaining = budget - totalCost;
+            
+            let armyText = `=== ESERCITO CALL TO LEADERSHIP ===\n\n`;
+            armyText += `Budget: $${formatNumber(budget)}\n`;
+            armyText += `Costo Totale: $${formatNumber(totalCost)}\n`;
+            armyText += `Unità Totali: ${totalUnits}\n`;
+            armyText += `Budget Rimanente: $${formatNumber(remaining)}\n\n`;
+            armyText += `=== TRUPPE DI TERRA ===\n\n`;
+            
+            // Categorie
+            const categories = {
+                'Fanteria Base': ['milizie', 'moschettieri', 'granatieri'],
+                'Artiglieria': ['cannone', 'artiglieria'],
+                'Cavalleria': ['corazzieri', 'dragoni', 'lancieri'],
+                'Unità Speciali': ['strumenti'],
+                'Supporto': ['becchino', 'esploratori', 'medici', 'ingegneri', 'guastatori'],
+                'Comando': ['generale'],
+                'Navi Leggere': ['galea', 'brigantino', 'goletta'],
+                'Navi Medie': ['fregata'],
+                'Navi Pesanti': ['galeone', 'vascello']
+            };
+            
+            for (const category in categories) {
+                let hasUnits = false;
+                let categoryText = '';
+                
+                for (const unitId of categories[category]) {
+                    if (army[unitId] > 0) {
+                        hasUnits = true;
+                        const unit = units[unitId];
+                        const unitCost = army[unitId] * unit.price;
+                        categoryText += `  ${unit.name}: ${army[unitId]} ${unit.type} - $${formatNumber(unitCost)}\n`;
+                    }
+                }
+                
+                if (hasUnits) {
+                    armyText += `${category}:\n${categoryText}\n`;
+                }
+            }
+            
+            armyText += `\n=== RIEPILOGO ===\n`;
+            armyText += `Creato il: ${new Date().toLocaleDateString('it-IT')}\n`;
+            armyText += `Salvato da: Calcolatore Esercito Call To Leadership`;
+            
+            // Copia negli appunti
+            navigator.clipboard.writeText(armyText).then(() => {
+                alert('Esercito copiato negli appunti!');
+            }).catch(err => {
+                console.error('Errore nella copia:', err);
+                alert('Errore nella copia negli appunti');
+            });
+        }
+        
+        // Salva l'esercito come file
+        function saveArmyToFile() {
+            const { totalCost } = calculateTotal();
+            const budget = parseInt(document.getElementById('budget').value) || 1000000;
+            const remaining = budget - totalCost;
+            
+            let armyText = `=== ESERCITO CALL TO LEADERSHIP ===\n\n`;
+            armyText += `DATA: ${new Date().toLocaleDateString('it-IT')}\n`;
+            armyText += `ORA: ${new Date().toLocaleTimeString('it-IT')}\n\n`;
+            armyText += `BUDGET: $${formatNumber(budget)}\n`;
+            armyText += `COSTO TOTALE: $${formatNumber(totalCost)}\n`;
+            armyText += `BUDGET RIMANENTE: $${formatNumber(remaining)}\n\n`;
+            
+            // Aggiungi tutte le unità, anche quelle a 0
+            armyText += `=== ELENCO COMPLETO UNITÀ ===\n\n`;
+            
+            for (const unitId in units) {
+                const unit = units[unitId];
+                const quantity = army[unitId] || 0;
+                const unitCost = quantity * unit.price;
+                armyText += `${unit.name}: ${quantity} ${unit.type} - $${formatNumber(unitCost)}\n`;
+            }
+            
+            // Crea e scarica il file
+            const blob = new Blob([armyText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `esercito_ctl_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Stampa il riepilogo
+        function printArmy() {
+            const printContent = document.createElement('div');
+            printContent.innerHTML = `
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    h1 { color: #333; border-bottom: 2px solid #6c6c40; padding-bottom: 10px; }
+                    .summary { background: #f5f5f5; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+                    .unit-list { margin-top: 20px; }
+                    .unit-item { margin-bottom: 10px; padding: 10px; border-left: 3px solid #6c6c40; background: #fff; }
+                    .total { font-weight: bold; color: #e41c1c; font-size: 1.2em; }
+                </style>
+                <h1>Riepilogo Esercito - Call To Leadership</h1>
+                <div class="summary">
+                    <p><strong>Data:</strong> ${new Date().toLocaleDateString('it-IT')}</p>
+                    <p><strong>Budget:</strong> $${formatNumber(parseInt(document.getElementById('budget').value) || 1000000)}</p>
+                    <p><strong>Costo Totale:</strong> $${document.getElementById('totalCost').textContent}</p>
+                    <p><strong>Unità Totali:</strong> ${document.getElementById('totalUnits').textContent}</p>
+                    <p><strong>Budget Rimanente:</strong> ${document.getElementById('remainingBudget').textContent}</p>
+                </div>
+                <div class="unit-list">
+                    <h2>Unità Selezionate</h2>
+            `;
+            
+            // Aggiungi solo le unità con quantità > 0
+            for (const unitId in army) {
+                if (army[unitId] > 0) {
+                    const unit = units[unitId];
+                    const unitCost = army[unitId] * unit.price;
+                    printContent.innerHTML += `
+                        <div class="unit-item">
+                            <strong>${unit.name}</strong><br>
+                            Quantità: ${army[unitId]} ${unit.type}<br>
+                            Costo: $${formatNumber(unitCost)}
+                        </div>
+                    `;
+                }
+            }
+            
+            printContent.innerHTML += `</div>`;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent.innerHTML);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        // Inizializza quando la pagina è caricata
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeArmy();
+            updateSummary();
+            
+            // Aggiungi event listener ai pulsanti
+            document.getElementById('updateBtn').addEventListener('click', updateSummary);
+            document.getElementById('clearBtn').addEventListener('click', clearAll);
+            
+            // Aggiorna automaticamente quando cambia il budget
+            document.getElementById('budget').addEventListener('change', updateSummary);
+            document.getElementById('budget').addEventListener('input', updateSummary);
+            
+            // Aggiungi event listener a tutti gli input di quantità
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const unitId = this.id.replace('qty-', '');
+                    updateUnitTotal(unitId);
+                });
+            });
+        });
+
+        // Smooth scrolling per tutti i link interni
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mostra/nascondi il pulsante "Torna su"
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        // Evidenzia il link attivo nella sidebar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.unit-category, .info-box, .calculator-section, .export-section');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Aggiunge classe active ai link sidebar
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
