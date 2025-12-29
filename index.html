@@ -793,7 +793,7 @@
 
     <div class="sidebar-container">
         <div class="sidebar">
-            <div class="sidebar-title">Unità Militari</div>
+            <div class="sidebar-title">ESERCITI DEL SETTECENTO</div>
             
             <div class="sidebar-section">
                 <a href="#calculator" class="sidebar-link">Calcolatore Esercito</a>
@@ -807,16 +807,14 @@
             
             <div class="sidebar-section">
                 <a href="#truppe-terra" class="sidebar-link">Truppe di Terra</a>
-                <a href="#fanteria-base" class="sidebar-link sidebar-sub">• Fanteria Base</a>
-                <a href="#artiglieria" class="sidebar-link sidebar-sub">• Artiglieria</a>
+                <a href="#fanteria" class="sidebar-link sidebar-sub">• Fanteria</a>
                 <a href="#cavalleria" class="sidebar-link sidebar-sub">• Cavalleria</a>
-                <a href="#unita-speciali" class="sidebar-link sidebar-sub">• Unità Speciali</a>
+                <a href="#artiglieria" class="sidebar-link sidebar-sub">• Artiglieria</a>
                 <a href="#supporto" class="sidebar-link sidebar-sub">• Supporto</a>
-                <a href="#comando" class="sidebar-link sidebar-sub">• Comando</a>
             </div>
             
             <div class="sidebar-section">
-                <a href="#truppe-mare" class="sidebar-link">Truppe di Mare</a>
+                <a href="#truppe-mare" class="sidebar-link">Marina da Guerra</a>
                 <a href="#navi-leggere" class="sidebar-link sidebar-sub">• Navi Leggere</a>
                 <a href="#navi-medie" class="sidebar-link sidebar-sub">• Navi Medie</a>
                 <a href="#navi-pesanti" class="sidebar-link sidebar-sub">• Navi Pesanti</a>
@@ -834,7 +832,7 @@
 
     <div class="main-content">
         <div class="page-header">
-            Sistema Unità Militari - Calcolatore Esercito
+            Sistema Unità Militari - Calcolatore Esercito del Settecento
         </div>
         
         <!-- CALCOLATORE ESERCITO -->
@@ -913,24 +911,24 @@
         
         <!-- TRUPPE DI TERRA -->
         <div class="unit-category" id="truppe-terra">
-            <h2 class="category-header">Truppe di Terra</h2>
+            <h2 class="category-header">🎖️ Truppe di Terra</h2>
             
-            <!-- Fanteria Base -->
-            <div class="unit-grid" id="fanteria-base">
-                <div class="unit-card" data-unit="milizie" data-price="32000" data-type="battaglione">
+            <!-- Fanteria -->
+            <div class="unit-grid" id="fanteria">
+                <div class="unit-card" data-unit="milizie" data-price="30000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-infantry"></span>
-                            Milizie Armate con Spada
+                            Milizie armate con spada
                         </div>
-                        <div class="unit-price">$32.000</div>
+                        <div class="unit-price">$30.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Queste milizie sono le unità più deboli di tutto il gioco, ma se sono in gran quantità ad attacco/difesa faranno vedere di che pasta sono fatti.
+                        Unità base di leva forzata, armata con vecchi moschetti o armi bianche. Efficaci solo in massa, indisciplinate ma numerose.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Fanteria base • <strong>Armamento:</strong> Spade • <strong>Ruolo:</strong> Carne da macchio
+                        <strong>Tipo:</strong> Fanteria base • <strong>Armamento:</strong> Moschetti/Spade • <strong>Ruolo:</strong> Carne da macchio
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -942,20 +940,20 @@
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="moschettieri" data-price="80000" data-type="battaglione">
+                <div class="unit-card" data-unit="moschettieri" data-price="75000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-infantry"></span>
                             Moschettieri
                         </div>
-                        <div class="unit-price">$80.000</div>
+                        <div class="unit-price">$75.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Le unità base che tutti gli eserciti devono avere, sono le truppe di nicchia degli eserciti settecenteschi. Senza corazza e armati di un moschetto con baionetta, è sempre consigliato averne a dismisura di queste unità.
+                        Colonna portante di ogni esercito moderno. Addestrati al fuoco a salve e alla baionetta. Disciplinati ma vulnerabili alla cavalleria.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Fanteria base • <strong>Armamento:</strong> Moschetto con baionetta • <strong>Ruolo:</strong> Linea principale
+                        <strong>Tipo:</strong> Fanteria di linea • <strong>Armamento:</strong> Moschetto con baionetta • <strong>Ruolo:</strong> Linea principale
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -967,20 +965,45 @@
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="granatieri" data-price="128000" data-type="battaglione">
+                <div class="unit-card" data-unit="fucilieri" data-price="100000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Fucilieri
+                        </div>
+                        <div class="unit-price">$100.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Tiratori scelti con fucili a canna rigata, più precisi ma a ricarica lenta. Usati come skirmisher per disturbare le linee nemiche.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Tiratori scelti • <strong>Armamento:</strong> Fucile a canna rigata • <strong>Ruolo:</strong> Disturbo linee nemiche
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('fucilieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-fucilieri" value="0" min="0" onchange="updateUnitTotal('fucilieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('fucilieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-fucilieri">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="granatieri" data-price="135000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-infantry"></span>
                             Granatieri
                         </div>
-                        <div class="unit-price">$128.000</div>
+                        <div class="unit-price">$135.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Queste truppe sono armate di una sorta di bomba a mano, la quale esplode all'impatto creando una piccola ma letale esplosione.
+                        Truppe d'élite per assalti e combattimento ravvicinato. Fisicamente imponenti, armati di granate e moschetti corti.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Fanteria d'assalto • <strong>Armamento:</strong> Bombe a mano • <strong>Ruolo:</strong> Assalto frontale
+                        <strong>Tipo:</strong> Fanteria d'assalto • <strong>Armamento:</strong> Granate e moschetti corti • <strong>Ruolo:</strong> Assalto frontale
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -993,104 +1016,72 @@
                 </div>
             </div>
             
-            <!-- Artiglieria -->
-            <div class="note-box">
-                <strong>Nota:</strong> 1 Compagnia = 5 macchine da guerra
-            </div>
-            
-            <div class="unit-grid" id="artiglieria">
-                <div class="unit-card" data-unit="cannone" data-price="320000" data-type="compagnia">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-artillery"></span>
-                            Cannone
-                        </div>
-                        <div class="unit-price">$320.000</div>
-                    </div>
-                    <div class="unit-type land">Compagnia (5 unità)</div>
-                    <div class="unit-description">
-                        Sono utili macchine di assedio, possono distruggere agglomerati di truppe in pochi colpi, ma sfortunatamente non sono così tanto precise, ma sono facilmente movibili. Hanno una gittata che va dai 200 ai 300m massimo.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Artiglieria leggera • <strong>Gittata:</strong> 200-300m • <strong>Mobilità:</strong> Alta
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('cannone', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-cannone" value="0" min="0" onchange="updateUnitTotal('cannone')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('cannone', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-cannone">$0</div>
-                    </div>
-                </div>
-                
-                <div class="unit-card" data-unit="artiglieria" data-price="520000" data-type="compagnia">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-artillery"></span>
-                            Artiglieria
-                        </div>
-                        <div class="unit-price">$520.000</div>
-                    </div>
-                    <div class="unit-type land">Compagnia (5 unità)</div>
-                    <div class="unit-description">
-                        Usate per bombardare, rispetto ai cannoni le artiglierie sono sicuramente molto più potenti, ma pure più difficili da muovere, soprattutto nelle zone di alta montagna. Gittata massima di 5km.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Artiglieria pesante • <strong>Gittata:</strong> Fino a 5km • <strong>Mobilità:</strong> Bassa
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('artiglieria', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-artiglieria" value="0" min="0" onchange="updateUnitTotal('artiglieria')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('artiglieria', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-artiglieria">$0</div>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Cavalleria -->
             <div class="unit-grid" id="cavalleria">
-                <div class="unit-card" data-unit="corazzieri" data-price="280000" data-type="battaglione">
+                <div class="unit-card" data-unit="lancieri" data-price="125000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-cavalry"></span>
-                            Corazzieri
+                            Lancieri
                         </div>
-                        <div class="unit-price">$280.000</div>
+                        <div class="unit-price">$125.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Cavalleria pesante, equipaggiata di un'armatura pesante, pistole e spade. Sicuramente più lenta rispetto agli ussari, ma più letale e potente.
+                        Cavalleria leggera d'origine polacca/ottomana. Veloce e letale in carica frontale, vulnerabile al fuoco disciplinato.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Cavalleria pesante • <strong>Armamento:</strong> Armatura pesante, pistole, spade • <strong>Ruolo:</strong> Carica pesante
+                        <strong>Tipo:</strong> Cavalleria leggera • <strong>Armamento:</strong> Lancia • <strong>Ruolo:</strong> Carica frontale rapida
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('corazzieri', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-corazzieri" value="0" min="0" onchange="updateUnitTotal('corazzieri')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('corazzieri', 1)">+</button>
+                            <button class="quantity-btn minus" onclick="changeQuantity('lancieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-lancieri" value="0" min="0" onchange="updateUnitTotal('lancieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('lancieri', 1)">+</button>
                         </div>
-                        <div class="unit-total" id="total-corazzieri">$0</div>
+                        <div class="unit-total" id="total-lancieri">$0</div>
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="dragoni" data-price="176000" data-type="battaglione">
+                <div class="unit-card" data-unit="ussari" data-price="150000" data-type="battaglione">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Ussari
+                        </div>
+                        <div class="unit-price">$150.000</div>
+                    </div>
+                    <div class="unit-type land">Battaglione (250 truppe)</div>
+                    <div class="unit-description">
+                        Cavalleria leggera d'origine ungherese. Specializzati in incursioni, ricognizione e inseguimento. Aggili ma poco protetti.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Cavalleria leggera • <strong>Armamento:</strong> Sciabola • <strong>Ruolo:</strong> Incursioni e ricognizione
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('ussari', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-ussari" value="0" min="0" onchange="updateUnitTotal('ussari')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('ussari', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-ussari">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="dragoni" data-price="190000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-cavalry"></span>
                             Dragoni
                         </div>
-                        <div class="unit-price">$176.000</div>
+                        <div class="unit-price">$190.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Cavalleria media, equipaggiata di un'armatura media e una pistola, chiamata "Dragone", una specie di pistola di grandi dimensioni.
+                        Cavalleria media che combatte anche a piedi. Versatili per presidi e azioni rapide. Armata di moschettoni e sciabole.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Cavalleria media • <strong>Armamento:</strong> Armatura media, pistola "Dragone" • <strong>Ruolo:</strong> Supporto mobile
+                        <strong>Tipo:</strong> Cavalleria media • <strong>Armamento:</strong> Moschettoni e sciabole • <strong>Ruolo:</strong> Versatile presidi/azioni rapide
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1102,102 +1093,131 @@
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="lancieri" data-price="128000" data-type="battaglione">
+                <div class="unit-card" data-unit="corazzieri" data-price="320000" data-type="battaglione">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-cavalry"></span>
-                            Lancieri
+                            Corazzieri
                         </div>
-                        <div class="unit-price">$128.000</div>
+                        <div class="unit-price">$320.000</div>
                     </div>
                     <div class="unit-type land">Battaglione (250 truppe)</div>
                     <div class="unit-description">
-                        Cavalleria leggera, equipaggiata di una normale uniforme e una lancia.
+                        Cavalleria pesante d'élite, protetta da corazza completa. Decisivi nello sfondamento delle linee nemiche. Lenti e costosi.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Cavalleria leggera • <strong>Armamento:</strong> Uniforme, lancia • <strong>Ruolo:</strong> Ricognizione e attacchi rapidi
+                        <strong>Tipo:</strong> Cavalleria pesante • <strong>Armamento:</strong> Armatura completa • <strong>Ruolo:</strong> Sfondamento linee
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('lancieri', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-lancieri" value="0" min="0" onchange="updateUnitTotal('lancieri')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('lancieri', 1)">+</button>
+                            <button class="quantity-btn minus" onclick="changeQuantity('corazzieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-corazzieri" value="0" min="0" onchange="updateUnitTotal('corazzieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('corazzieri', 1)">+</button>
                         </div>
-                        <div class="unit-total" id="total-lancieri">$0</div>
+                        <div class="unit-total" id="total-corazzieri">$0</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Unità Speciali -->
-            <div class="unit-grid" id="unita-speciali">
-                <div class="unit-card" data-unit="strumenti" data-price="120000" data-type="battaglione">
+            <!-- Artiglieria -->
+            <div class="note-box">
+                <strong>Nota:</strong> 1 Compagnia = 5 macchine da guerra
+            </div>
+            
+            <div class="unit-grid" id="artiglieria">
+                <div class="unit-card" data-unit="cannone" data-price="300000" data-type="compagnia">
                     <div class="unit-header">
                         <div class="unit-name">
-                            <span class="unit-icon icon-infantry"></span>
-                            Truppe con Strumenti Musicali
+                            <span class="unit-icon icon-artillery"></span>
+                            Cannone
                         </div>
-                        <div class="unit-price">$120.000</div>
+                        <div class="unit-price">$300.000</div>
                     </div>
-                    <div class="unit-type support">Battaglione (250 truppe)</div>
+                    <div class="unit-type land">Compagnia (5 unità)</div>
                     <div class="unit-description">
-                        Le truppe con gli strumenti, non fanno danno effettivo, infliggono però coraggio alle truppe alleate, soprattutto quando queste devono caricare, è sempre consigliato infatti di metterne un paio quando si va alla carica.
+                        Artiglieria campale leggera (4-8 libbre). Mobile e versatile per supporto diretto alla fanteria. Gittata: 300-800m.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Supporto morale • <strong>Effetto:</strong> +Coraggio alle truppe • <strong>Ruolo:</strong> Supporto psicologico
+                        <strong>Tipo:</strong> Artiglieria leggera • <strong>Gittata:</strong> 300-800m • <strong>Mobilità:</strong> Alta
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('strumenti', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-strumenti" value="0" min="0" onchange="updateUnitTotal('strumenti')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('strumenti', 1)">+</button>
+                            <button class="quantity-btn minus" onclick="changeQuantity('cannone', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-cannone" value="0" min="0" onchange="updateUnitTotal('cannone')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('cannone', 1)">+</button>
                         </div>
-                        <div class="unit-total" id="total-strumenti">$0</div>
+                        <div class="unit-total" id="total-cannone">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="artiglieria-a-cavallo" data-price="420000" data-type="compagnia">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-artillery"></span>
+                            Artiglieria a Cavallo
+                        </div>
+                        <div class="unit-price">$420.000</div>
+                    </div>
+                    <div class="unit-type land">Compagnia (5 unità)</div>
+                    <div class="unit-description">
+                        Cannoni leggeri (3-6 libbre) trainati da cavalli veloci. Supporto mobile per la cavalleria. Rapido schieramento.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Artiglieria mobile • <strong>Gittata:</strong> 200-600m • <strong>Mobilità:</strong> Molto alta
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('artiglieria-a-cavallo', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-artiglieria-a-cavallo" value="0" min="0" onchange="updateUnitTotal('artiglieria-a-cavallo')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('artiglieria-a-cavallo', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-artiglieria-a-cavallo">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="artiglieria-pesante" data-price="560000" data-type="compagnia">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-artillery"></span>
+                            Artiglieria
+                        </div>
+                        <div class="unit-price">$560.000</div>
+                    </div>
+                    <div class="unit-type land">Compagnia (5 unità)</div>
+                    <div class="unit-description">
+                        Cannoni pesanti d'assedio (12-24 libbre) e obici. Distruttivi ma lenti da spostare. Gittata: 1-2km.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Artiglieria pesante • <strong>Gittata:</strong> 1-2km • <strong>Mobilità:</strong> Bassa
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('artiglieria-pesante', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-artiglieria-pesante" value="0" min="0" onchange="updateUnitTotal('artiglieria-pesante')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('artiglieria-pesante', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-artiglieria-pesante">$0</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Supporto (Squadroni) -->
+            <!-- Supporto -->
             <div class="note-box">
                 <strong>Nota:</strong> 1 Squadrone = 5 unità specializzate
             </div>
             
             <div class="unit-grid" id="supporto">
-                <div class="unit-card" data-unit="becchino" data-price="128000" data-type="squadrone">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-support"></span>
-                            Becchino di Guerra
-                        </div>
-                        <div class="unit-price">$128.000</div>
-                    </div>
-                    <div class="unit-type support">Squadrone (5 unità)</div>
-                    <div class="unit-description">
-                        Servono per seppellire i feriti e non far scatenare pestilenze tra i militari e i civili.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Supporto sanitario • <strong>Funzione:</strong> Sepoltura morti • <strong>Ruolo:</strong> Igiene campo
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('becchino', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-becchino" value="0" min="0" onchange="updateUnitTotal('becchino')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('becchino', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-becchino">$0</div>
-                    </div>
-                </div>
-                
-                <div class="unit-card" data-unit="esploratori" data-price="80000" data-type="squadrone">
+                <div class="unit-card" data-unit="esploratori" data-price="75000" data-type="squadrone">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-support"></span>
                             Esploratori
                         </div>
-                        <div class="unit-price">$80.000</div>
+                        <div class="unit-price">$75.000</div>
                     </div>
                     <div class="unit-type support">Squadrone (5 unità)</div>
                     <div class="unit-description">
-                        Sono un gruppo di 5 unità, i quali devono essere mandati in esplorazione per studiare/capire le tattiche e l'esercito del nemico.
+                        Piccoli gruppi di ricognitori a cavallo o a piedi. Essenziali per intelligence prima della battaglia.
                     </div>
                     <div class="unit-stats">
                         <strong>Tipo:</strong> Ricognizione • <strong>Funzione:</strong> Esplorazione territorio • <strong>Ruolo:</strong> Intelligence
@@ -1211,136 +1231,58 @@
                         <div class="unit-total" id="total-esploratori">$0</div>
                     </div>
                 </div>
-                
-                <div class="unit-card" data-unit="medici" data-price="80000" data-type="squadrone">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-support"></span>
-                            Medici
-                        </div>
-                        <div class="unit-price">$80.000</div>
-                    </div>
-                    <div class="unit-type support">Squadrone (5 unità)</div>
-                    <div class="unit-description">
-                        Sono un gruppo di 5 medici, i quali hanno il compito di curare i feriti di qualsiasi tipo. Ovviamente non possono attaccare e rimangono sempre nei campi dove si trovano i generali, le varie baracche per le truppe ecc.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Supporto sanitario • <strong>Funzione:</strong> Cura feriti • <strong>Ruolo:</strong> Assistenza medica
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('medici', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-medici" value="0" min="0" onchange="updateUnitTotal('medici')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('medici', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-medici">$0</div>
-                    </div>
-                </div>
-                
-                <div class="unit-card" data-unit="ingegneri" data-price="60000" data-type="squadrone">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-support"></span>
-                            Ingegneri
-                        </div>
-                        <div class="unit-price">$60.000</div>
-                    </div>
-                    <div class="unit-type support">Squadrone (5 unità)</div>
-                    <div class="unit-description">
-                        Sono un gruppo di 5 unità, le quali hanno il compito di riparare i ponti, strade e via dicendo per le battaglie.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Supporto logistico • <strong>Funzione:</strong> Riparazioni infrastrutture • <strong>Ruolo:</strong> Ingegneria
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('ingegneri', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-ingegneri" value="0" min="0" onchange="updateUnitTotal('ingegneri')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('ingegneri', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-ingegneri">$0</div>
-                    </div>
-                </div>
-                
-                <div class="unit-card" data-unit="guastatori" data-price="60000" data-type="squadrone">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-support"></span>
-                            Guastatori
-                        </div>
-                        <div class="unit-price">$60.000</div>
-                    </div>
-                    <div class="unit-type support">Squadrone (5 unità)</div>
-                    <div class="unit-description">
-                        Persone che si occupano di indebolire le macchine d'assedio nemiche, le mura, distruggere le risorse e via dicendo.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Supporto offensivo • <strong>Funzione:</strong> Sabotaggio strutture • <strong>Ruolo:</strong> Demolizioni
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('guastatori', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-guastatori" value="0" min="0" onchange="updateUnitTotal('guastatori')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('guastatori', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-guastatori">$0</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Comando -->
-            <div class="unit-grid" id="comando">
-                <div class="unit-card" data-unit="generale" data-price="130000" data-type="singola">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-commander"></span>
-                            Generale Livello 1
-                        </div>
-                        <div class="unit-price">$130.000</div>
-                    </div>
-                    <div class="unit-type support">Singola unità</div>
-                    <div class="unit-description">
-                        Utili per fornire bonus di comando alle proprie divisioni.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Comando • <strong>Effetto:</strong> Bonus alle divisioni • <strong>Ruolo:</strong> Leadership
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('generale', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-generale" value="0" min="0" onchange="updateUnitTotal('generale')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('generale', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-generale">$0</div>
-                    </div>
-                </div>
             </div>
         </div>
         
-        <!-- TRUPPE DI MARE -->
+        <!-- MARINA DA GUERRA -->
         <div class="unit-category" id="truppe-mare">
-            <h2 class="category-header">Truppe di Mare</h2>
+            <h2 class="category-header">⚓ Marina da Guerra</h2>
             
             <div class="note-box">
-                <strong>Avvertenze:</strong> Il prezzo è per nave singola. Tutte le navi, eccetto quella da trasporto, sono armate con cannoni.
+                <strong>Avvertenze:</strong> Il prezzo è per nave singola. Tutte le navi sono armate con cannoni.
             </div>
             
             <!-- Navi Leggere -->
             <div class="unit-grid" id="navi-leggere">
-                <div class="unit-card" data-unit="galea" data-price="130000" data-type="nave">
+                <div class="unit-card" data-unit="goletta" data-price="75000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Goletta
+                        </div>
+                        <div class="unit-price">$75.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Piccolo veliero a due alberi con scafo snello, estremamente agile e veloce grazie alle sue vele auriche. Ideale per pattugliamenti costieri, messaggeria e perlustrazione.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 8-12 piccoli • <strong>Ruolo:</strong> Pattugliamento costiero
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('goletta', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-goletta" value="0" min="0" onchange="updateUnitTotal('goletta')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('goletta', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-goletta">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="galea" data-price="125000" data-type="nave">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-naval"></span>
                             Galea
                         </div>
-                        <div class="unit-price">$130.000</div>
+                        <div class="unit-price">$125.000</div>
                     </div>
                     <div class="unit-type naval">Nave singola</div>
                     <div class="unit-description">
-                        Le Galee, compongono la principale forza d'attacco per le marine dell'epoca. Armate con una fila di cannone per lato, per 6 cannoni a fila. Non sono sicuramente le navi più potenti, ma quelle più economiche e con ottime capacità di dare fastidio e distrarre i nemici.
+                        Nave da guerra a propulsione mista: remi e vela. Basso pescaggio che le permette di operare in acque basse e costiere. Dominante nel Mediterraneo, dove il vento è incostante.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 6 per lato • <strong>Ruolo:</strong> Attacco principale economico
+                        <strong>Tipo:</strong> Nave costiera • <strong>Cannoni:</strong> 10-20 • <strong>Ruolo:</strong> Dominio Mediterraneo
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1352,20 +1294,20 @@
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="brigantino" data-price="200000" data-type="nave">
+                <div class="unit-card" data-unit="brigantino" data-price="180000" data-type="nave">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-naval"></span>
                             Brigantino
                         </div>
-                        <div class="unit-price">$200.000</div>
+                        <div class="unit-price">$180.000</div>
                     </div>
                     <div class="unit-type naval">Nave singola</div>
                     <div class="unit-description">
-                        Unità navale leggera, principale componente degli eserciti navali, di piccola stazza, è utilissima per rapide incursioni o per tagliare rapidamente la ritirata alla flotta avversaria, in un gruppo superiore alle dieci possono facilmente avere la meglio su qualsiasi unità marittima. Sono armate con 2 file di cannoni per lato, ognuna da 8 cannoni.
+                        Veliero leggero a due alberi, estremamente manovriero e veloce. Il preferito dei corsari e delle marine per incursioni rapide, esplorazione e inseguimenti.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 16 per lato (2 file da 8) • <strong>Ruolo:</strong> Incursioni rapide
+                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> 14-20 • <strong>Ruolo:</strong> Incursioni rapide
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1376,49 +1318,49 @@
                         <div class="unit-total" id="total-brigantino">$0</div>
                     </div>
                 </div>
-                
-                <div class="unit-card" data-unit="goletta" data-price="80000" data-type="nave">
-                    <div class="unit-header">
-                        <div class="unit-name">
-                            <span class="unit-icon icon-naval"></span>
-                            Goletta
-                        </div>
-                        <div class="unit-price">$80.000</div>
-                    </div>
-                    <div class="unit-type naval">Nave singola</div>
-                    <div class="unit-description">
-                        La goletta è un'imbarcazione a vela fornita di bompresso e due alberi, leggermente inclinati verso poppa, armati con vele auriche. Ha 10 cannoni massimo sul ponte. Non è molto potente ed è molto fragile, ma abbastanza veloce.
-                    </div>
-                    <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave leggera • <strong>Cannoni:</strong> Max 10 • <strong>Ruolo:</strong> Pattugliamento veloce
-                    </div>
-                    <div class="unit-controls">
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="changeQuantity('goletta', -1)">-</button>
-                            <input type="number" class="quantity-input" id="qty-goletta" value="0" min="0" onchange="updateUnitTotal('goletta')">
-                            <button class="quantity-btn plus" onclick="changeQuantity('goletta', 1)">+</button>
-                        </div>
-                        <div class="unit-total" id="total-goletta">$0</div>
-                    </div>
-                </div>
             </div>
             
             <!-- Navi Medie -->
             <div class="unit-grid" id="navi-medie">
-                <div class="unit-card" data-unit="fregata" data-price="800000" data-type="nave">
+                <div class="unit-card" data-unit="corvetta" data-price="280000" data-type="nave">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-naval"></span>
+                            Corvetta
+                        </div>
+                        <div class="unit-price">$280.000</div>
+                    </div>
+                    <div class="unit-type naval">Nave singola</div>
+                    <div class="unit-description">
+                        Nave da guerra di media grandezza a tre alberi, progettata per la scorta, il pattugliamento e le missioni indipendenti. Bilanciata tra velocità, autonomia e potenza di fuoco.
+                    </div>
+                    <div class="unit-stats">
+                        <strong>Tipo:</strong> Nave media • <strong>Cannoni:</strong> 20-30 • <strong>Ruolo:</strong> Scorta e pattugliamento
+                    </div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('corvetta', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-corvetta" value="0" min="0" onchange="updateUnitTotal('corvetta')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('corvetta', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-corvetta">$0</div>
+                    </div>
+                </div>
+                
+                <div class="unit-card" data-unit="fregata" data-price="700000" data-type="nave">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-naval"></span>
                             Fregata
                         </div>
-                        <div class="unit-price">$800.000</div>
+                        <div class="unit-price">$700.000</div>
                     </div>
                     <div class="unit-type naval">Nave singola</div>
                     <div class="unit-description">
-                        La fregata è dotata di un unico ponte completo di batteria e adibita a lavori di pattuglia e di scorta piuttosto che ad azioni militari. Su queste navi è scomparso anche l'albero di bonaventura, rendendo così queste unità ancor più agili nel risalire il vento. Per finire possono essere equipaggiate 20-22 a 40-44 cannoni oppure addirittura da 48-54 cannoni (se li prendete da 48-58, pagate 200k in più).
+                        Il cavallo di battaglia delle flotte oceaniche. Grande veliero a tre alberi, veloce, con ampia autonomia e potente. Progettata per crociere di mesi lontano dalla madrepatria.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave media • <strong>Cannoni:</strong> 20-54 • <strong>Ruolo:</strong> Pattuglia e scorta
+                        <strong>Tipo:</strong> Nave media • <strong>Cannoni:</strong> 30-50 • <strong>Ruolo:</strong> Cavallo di battaglia oceanico
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1433,20 +1375,20 @@
             
             <!-- Navi Pesanti -->
             <div class="unit-grid" id="navi-pesanti">
-                <div class="unit-card" data-unit="galeone" data-price="800000" data-type="nave">
+                <div class="unit-card" data-unit="galeone" data-price="950000" data-type="nave">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-naval"></span>
                             Galeone
                         </div>
-                        <div class="unit-price">$800.000</div>
+                        <div class="unit-price">$950.000</div>
                     </div>
                     <div class="unit-type naval">Nave singola</div>
                     <div class="unit-description">
-                        Un poderoso veliero da guerra, progettato per affrontare la navigazione oceaniche. Era composto da un castello di prua più basso, un castello di poppa di forma squadrata e uno scafo allungato. È armato con 4 file di cannoni per lato, ognuna di esse contiene circa 12 cannoni, ciò implica che abbia una buona potenza di fuoco. Uno dei maggiori svantaggi è che non può muoversi e combattere senza svantaggi negli stretti (Bosforo, Gibilterra, lo stretto di Danimarca).
+                        Maestoso veliero da guerra dell'era della vela. Robusto, con alti castelli a prua e poppa e un ponte di batteria coperto. Meno agile delle fregate, ma più potente e con maggiore capacità di carico.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 48 per lato (4 file da 12) • <strong>Ruolo:</strong> Nave da guerra oceanica
+                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 50-70 • <strong>Ruolo:</strong> Nave da guerra potente
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1458,20 +1400,20 @@
                     </div>
                 </div>
                 
-                <div class="unit-card" data-unit="vascello" data-price="1600000" data-type="nave">
+                <div class="unit-card" data-unit="vascello" data-price="1450000" data-type="nave">
                     <div class="unit-header">
                         <div class="unit-name">
                             <span class="unit-icon icon-naval"></span>
                             Vascello
                         </div>
-                        <div class="unit-price">$1.600.000</div>
+                        <div class="unit-price">$1.450.000</div>
                     </div>
                     <div class="unit-type naval">Nave singola</div>
                     <div class="unit-description">
-                        Il vascello è tipo di nave da guerra derivato dal galeone, con circa 40 m di lunghezza e 11m di larghezza con un peso di 200/300 tonnellate. Sono immense navi; potenti ma lente e non adatte a combattimenti in luoghi ristretti o piccoli. Rispetto al galeone hanno 5 file di cannoni per lato e ogni fila ha 5 cannoni.
+                        L'ammiraglia, la regina dei mari. Enorme nave di linea a tre ponti di cannoni, progettata per dominare le battaglie in linea di fila. Porta una spaventosa bordata di 70-100 cannoni.
                     </div>
                     <div class="unit-stats">
-                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 25 per lato (5 file da 5) • <strong>Ruolo:</strong> Nave da battaglia principale
+                        <strong>Tipo:</strong> Nave pesante • <strong>Cannoni:</strong> 70-100 • <strong>Ruolo:</strong> Nave ammiraglia
                     </div>
                     <div class="unit-controls">
                         <div class="quantity-controls">
@@ -1493,30 +1435,31 @@
                 <div class="info-card">
                     <h3 class="info-card-title">Truppe di Terra</h3>
                     <div class="info-card-content">
-                        <p><strong>Totale unità:</strong> 13 tipi</p>
+                        <p><strong>Totale unità:</strong> 9 tipi</p>
                         <p><strong>Categorie:</strong></p>
                         <ul>
-                            <li>Fanteria base: 3 unità</li>
-                            <li>Artiglieria: 2 unità</li>
-                            <li>Cavalleria: 3 unità</li>
-                            <li>Unità speciali: 1 unità</li>
-                            <li>Supporto: 5 squadroni</li>
-                            <li>Comando: 1 generale</li>
+                            <li>Fanteria: 4 unità</li>
+                            <li>Cavalleria: 4 unità</li>
+                            <li>Artiglieria: 3 unità</li>
+                            <li>Supporto: 1 squadrone</li>
                         </ul>
+                        <p><strong>Unità più economica:</strong> Milizie ($30.000)</p>
+                        <p><strong>Unità più costosa:</strong> Corazzieri ($320.000)</p>
                     </div>
                 </div>
                 
                 <div class="info-card">
-                    <h3 class="info-card-title">Truppe di Mare</h3>
+                    <h3 class="info-card-title">Marina da Guerra</h3>
                     <div class="info-card-content">
-                        <p><strong>Totale navi:</strong> 6 tipi</p>
+                        <p><strong>Totale navi:</strong> 7 tipi</p>
                         <p><strong>Categorie:</strong></p>
                         <ul>
                             <li>Navi leggere: 3 unità</li>
-                            <li>Navi medie: 1 unità</li>
+                            <li>Navi medie: 2 unità</li>
                             <li>Navi pesanti: 2 unità</li>
                         </ul>
-                        <p><strong>Prezzo totale flotta base:</strong> $3,610,000</p>
+                        <p><strong>Nave più economica:</strong> Goletta ($75.000)</p>
+                        <p><strong>Nave più costosa:</strong> Vascello ($1.450.000)</p>
                     </div>
                 </div>
                 
@@ -1527,18 +1470,18 @@
                         <p><strong>Compagnia:</strong> 5 macchine da guerra</p>
                         <p><strong>Squadrone:</strong> 5 unità specializzate</p>
                         <p><strong>Nave:</strong> Singola unità</p>
-                        <p><strong>Generale:</strong> Singola unità di comando</p>
+                        <p><strong>Totale tipi unità:</strong> 16</p>
                     </div>
                 </div>
                 
                 <div class="info-card">
                     <h3 class="info-card-title">Statistiche Veloci</h3>
                     <div class="info-card-content">
-                        <p><strong>Unità più economica (terra):</strong> Milizie ($32.000)</p>
-                        <p><strong>Unità più costosa (terra):</strong> Artiglieria ($520.000)</p>
-                        <p><strong>Nave più economica:</strong> Goletta ($80.000)</p>
-                        <p><strong>Nave più costosa:</strong> Vascello ($1.600.000)</p>
-                        <p><strong>Totale tipi unità:</strong> 19</p>
+                        <p><strong>Fanteria totale massima:</strong> 1,000 truppe (4 battaglioni)</p>
+                        <p><strong>Cavalleria totale massima:</strong> 1,000 cavalieri (4 battaglioni)</p>
+                        <p><strong>Artiglieria totale massima:</strong> 15 pezzi (3 compagnie)</p>
+                        <p><strong>Costo esercito completo:</strong> $3,235,000</p>
+                        <p><strong>Costo flotta completa:</strong> $3,860,000</p>
                     </div>
                 </div>
             </div>
@@ -1584,42 +1527,36 @@
     <a href="#inizio" class="back-to-top">↑</a>
 
     <script>
-        // Sistema di unità con prezzi
+        // Sistema di unità con prezzi aggiornati
         const units = {
-            // Fanteria base
-            'milizie': { name: 'Milizie Armate con Spada', price: 32000, type: 'Battaglione' },
-            'moschettieri': { name: 'Moschettieri', price: 80000, type: 'Battaglione' },
-            'granatieri': { name: 'Granatieri', price: 128000, type: 'Battaglione' },
-            
-            // Artiglieria
-            'cannone': { name: 'Cannone', price: 320000, type: 'Compagnia' },
-            'artiglieria': { name: 'Artiglieria', price: 520000, type: 'Compagnia' },
+            // Fanteria
+            'milizie': { name: 'Milizie armate con spada', price: 30000, type: 'Battaglione' },
+            'moschettieri': { name: 'Moschettieri', price: 75000, type: 'Battaglione' },
+            'fucilieri': { name: 'Fucilieri', price: 100000, type: 'Battaglione' },
+            'granatieri': { name: 'Granatieri', price: 135000, type: 'Battaglione' },
             
             // Cavalleria
-            'corazzieri': { name: 'Corazzieri', price: 280000, type: 'Battaglione' },
-            'dragoni': { name: 'Dragoni', price: 176000, type: 'Battaglione' },
-            'lancieri': { name: 'Lancieri', price: 128000, type: 'Battaglione' },
+            'lancieri': { name: 'Lancieri', price: 125000, type: 'Battaglione' },
+            'ussari': { name: 'Ussari', price: 150000, type: 'Battaglione' },
+            'dragoni': { name: 'Dragoni', price: 190000, type: 'Battaglione' },
+            'corazzieri': { name: 'Corazzieri', price: 320000, type: 'Battaglione' },
             
-            // Unità speciali
-            'strumenti': { name: 'Truppe con Strumenti Musicali', price: 120000, type: 'Battaglione' },
+            // Artiglieria
+            'cannone': { name: 'Cannone', price: 300000, type: 'Compagnia' },
+            'artiglieria-a-cavallo': { name: 'Artiglieria a Cavallo', price: 420000, type: 'Compagnia' },
+            'artiglieria-pesante': { name: 'Artiglieria', price: 560000, type: 'Compagnia' },
             
-            // Supporto (squadroni)
-            'becchino': { name: 'Becchino di Guerra', price: 128000, type: 'Squadrone' },
-            'esploratori': { name: 'Esploratori', price: 80000, type: 'Squadrone' },
-            'medici': { name: 'Medici', price: 80000, type: 'Squadrone' },
-            'ingegneri': { name: 'Ingegneri', price: 60000, type: 'Squadrone' },
-            'guastatori': { name: 'Guastatori', price: 60000, type: 'Squadrone' },
-            
-            // Comando
-            'generale': { name: 'Generale Livello 1', price: 130000, type: 'Singola' },
+            // Supporto
+            'esploratori': { name: 'Esploratori', price: 75000, type: 'Squadrone' },
             
             // Navi
-            'galea': { name: 'Galea', price: 130000, type: 'Nave' },
-            'brigantino': { name: 'Brigantino', price: 200000, type: 'Nave' },
-            'goletta': { name: 'Goletta', price: 80000, type: 'Nave' },
-            'fregata': { name: 'Fregata', price: 800000, type: 'Nave' },
-            'galeone': { name: 'Galeone', price: 800000, type: 'Nave' },
-            'vascello': { name: 'Vascello', price: 1600000, type: 'Nave' }
+            'goletta': { name: 'Goletta', price: 75000, type: 'Nave' },
+            'galea': { name: 'Galea', price: 125000, type: 'Nave' },
+            'brigantino': { name: 'Brigantino', price: 180000, type: 'Nave' },
+            'corvetta': { name: 'Corvetta', price: 280000, type: 'Nave' },
+            'fregata': { name: 'Fregata', price: 700000, type: 'Nave' },
+            'galeone': { name: 'Galeone', price: 950000, type: 'Nave' },
+            'vascello': { name: 'Vascello', price: 1450000, type: 'Nave' }
         };
 
         // Stato corrente dell'esercito
@@ -1724,7 +1661,7 @@
             const budget = parseInt(document.getElementById('budget').value) || 1000000;
             const remaining = budget - totalCost;
             
-            let armyText = `=== ESERCITO CALL TO LEADERSHIP ===\n\n`;
+            let armyText = `=== ESERCITO DEL SETTECENTO - CALL TO LEADERSHIP ===\n\n`;
             armyText += `Budget: $${formatNumber(budget)}\n`;
             armyText += `Costo Totale: $${formatNumber(totalCost)}\n`;
             armyText += `Unità Totali: ${totalUnits}\n`;
@@ -1733,14 +1670,12 @@
             
             // Categorie
             const categories = {
-                'Fanteria Base': ['milizie', 'moschettieri', 'granatieri'],
-                'Artiglieria': ['cannone', 'artiglieria'],
-                'Cavalleria': ['corazzieri', 'dragoni', 'lancieri'],
-                'Unità Speciali': ['strumenti'],
-                'Supporto': ['becchino', 'esploratori', 'medici', 'ingegneri', 'guastatori'],
-                'Comando': ['generale'],
-                'Navi Leggere': ['galea', 'brigantino', 'goletta'],
-                'Navi Medie': ['fregata'],
+                'Fanteria': ['milizie', 'moschettieri', 'fucilieri', 'granatieri'],
+                'Cavalleria': ['lancieri', 'ussari', 'dragoni', 'corazzieri'],
+                'Artiglieria': ['cannone', 'artiglieria-a-cavallo', 'artiglieria-pesante'],
+                'Supporto': ['esploratori'],
+                'Navi Leggere': ['goletta', 'galea', 'brigantino'],
+                'Navi Medie': ['corvetta', 'fregata'],
                 'Navi Pesanti': ['galeone', 'vascello']
             };
             
@@ -1781,7 +1716,7 @@
             const budget = parseInt(document.getElementById('budget').value) || 1000000;
             const remaining = budget - totalCost;
             
-            let armyText = `=== ESERCITO CALL TO LEADERSHIP ===\n\n`;
+            let armyText = `=== ESERCITO DEL SETTECENTO - CALL TO LEADERSHIP ===\n\n`;
             armyText += `DATA: ${new Date().toLocaleDateString('it-IT')}\n`;
             armyText += `ORA: ${new Date().toLocaleTimeString('it-IT')}\n\n`;
             armyText += `BUDGET: $${formatNumber(budget)}\n`;
@@ -1803,7 +1738,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `esercito_ctl_${new Date().toISOString().split('T')[0]}.txt`;
+            a.download = `esercito_settecento_${new Date().toISOString().split('T')[0]}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1822,7 +1757,7 @@
                     .unit-item { margin-bottom: 10px; padding: 10px; border-left: 3px solid #6c6c40; background: #fff; }
                     .total { font-weight: bold; color: #e41c1c; font-size: 1.2em; }
                 </style>
-                <h1>Riepilogo Esercito - Call To Leadership</h1>
+                <h1>Riepilogo Esercito del Settecento - Call To Leadership</h1>
                 <div class="summary">
                     <p><strong>Data:</strong> ${new Date().toLocaleDateString('it-IT')}</p>
                     <p><strong>Budget:</strong> $${formatNumber(parseInt(document.getElementById('budget').value) || 1000000)}</p>
