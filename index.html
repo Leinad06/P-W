@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Wiki Dottrine Militari - Call To Leadership [RP]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(#393939, #686868);
+            font-family: 'Georgia', serif;
+            color: rgb(193, 193, 193);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            height: 60px;
+            background-color: #333;
+            border-bottom: solid 6px #6c6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .quote {
+            color: rgb(193, 193, 193);
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+        
+        /* Sidebar migliorata */
+        .sidebar-container {
+            position: fixed;
+            left: 0;
+            top: 60px;
+            width: 280px;
+            height: calc(100vh - 60px);
+            background: linear-gradient(180deg, #979797, #8c8c8c 100%);
+            overflow-y: auto;
+            z-index: 900;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            padding: 20px 0;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #6D5540;
+            font-weight: bold;
+            margin: 15px 20px 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #6c6c40;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-link {
+            display: block;
+            color: #e41c1c;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e41c1c;
+            padding-left: 24px;
+        }
+        
+        .sidebar-sub {
+            padding-left: 40px;
+            font-size: 0.9rem;
+            color: #6D5540;
+        }
+        
+        /* Scrollbar personalizzata */
+        .sidebar-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb {
+            background: #6c6c40;
+            border-radius: 4px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb:hover {
+            background: #7d7f51;
+        }
+        
+        /* Contenuto principale */
+        .main-content {
+            margin-left: 280px;
+            margin-top: 60px;
+            padding: 30px;
+            min-height: calc(100vh - 60px);
+        }
+        
+        .page-header {
+            background-color: #333;
+            color: #b6afaf;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            font-size: 1.4rem;
+            text-align: center;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .troop-category {
+            margin-bottom: 50px;
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 8px;
+            padding: 25px;
+            border: solid 2px #6c6c40;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-header {
+            font-size: 2.2rem;
+            color: #6c6c40;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #7d7f51;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+        
+        .category-header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #6c6c40, transparent);
+        }
+        
+        .troop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .troop-card {
+            background-color: rgba(68, 68, 68, 0.7);
+            border: 1px solid #6c6c40;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .troop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: #e41c1c;
+        }
+        
+        .troop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c6c40, transparent);
+        }
+        
+        .troop-title {
+            color: #d4af37;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(108, 108, 64, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .troop-price {
+            color: #e41c1c;
+            font-size: 1.2rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #6c6c40;
+        }
+        
+        .troop-desc {
+            font-size: 1rem;
+            color: #b6afaf;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .troop-limit {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(108, 108, 64, 0.2);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            color: #d4af37;
+            border-left: 3px solid #e41c1c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .limit-text {
+            font-style: italic;
+        }
+        
+        .enable-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .enable-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #6c6c40;
+        }
+        
+        .enable-checkbox label {
+            color: #b6afaf;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        /* Summary Section */
+        .summary-section {
+            background-color: rgba(51, 51, 51, 0.9);
+            border: 2px solid #6c6c40;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .summary-title {
+            color: #e41c1c;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-card {
+            background-color: rgba(108, 108, 64, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(108, 108, 64, 0.5);
+        }
+        
+        .summary-card-title {
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .summary-card-list {
+            list-style-type: none;
+        }
+        
+        .summary-card-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .summary-card-list li::before {
+            content: '•';
+            color: #e41c1c;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            border-top: solid 6px #6c6c40;
+            color: #b6afaf;
+            padding: 20px;
+            margin-top: 50px;
+            margin-left: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-style: italic;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .separator {
+            color: #6c6c40;
+        }
+        
+        footer a {
+            color: #e41c1c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #ff3333;
+            text-decoration: underline;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #6c6c40;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #7d7f51;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar-container {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            footer {
+                margin-left: 240px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-container {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                max-height: 50vh;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            footer {
+                margin-left: 0;
+            }
+            
+            .troop-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .category-header {
+                font-size: 1.8rem;
+            }
+            
+            .sidebar-title {
+                font-size: 1.1rem;
+            }
+            
+            .sidebar-link {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .troop-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+        
+        /* Utility classes */
+        .highlight {
+            color: #e41c1c;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .enabled-troop {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header id="inizio">
+        <div class="header-content">
+            <span class="quote">"There is no way to victory; victory is the only way." - Winston Churchill</span>
+        </div>
+    </header>
+
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <div class="sidebar-title">Truppe Disponibili</div>
+            
+            <div class="sidebar-section">
+                <a href="#truppe-terra" class="sidebar-link">⚔️ Truppe di Terra</a>
+                <a href="#milizia" class="sidebar-link sidebar-sub">• Milizia Cittadina</a>
+                <a href="#fanteria-leggera" class="sidebar-link sidebar-sub">• Fanteria Leggera</a>
+                <a href="#fanteria-pesante" class="sidebar-link sidebar-sub">• Fanteria Pesante</a>
+                <a href="#falangiti" class="sidebar-link sidebar-sub">• Falangiti Macedoni</a>
+                <a href="#arcieri" class="sidebar-link sidebar-sub">• Arcieri</a>
+                <a href="#frombolieri" class="sidebar-link sidebar-sub">• Frombolieri Baleari</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#cavalleria" class="sidebar-link">🐴 Cavalleria</a>
+                <a href="#numida" class="sidebar-link sidebar-sub">• Cavalleria Numida</a>
+                <a href="#cav-leggera" class="sidebar-link sidebar-sub">• Cavalleria Leggera</a>
+                <a href="#cav-pesante" class="sidebar-link sidebar-sub">• Cavalleria Pesante</a>
+                <a href="#catafratta" class="sidebar-link sidebar-sub">• Cavalleria Catafratta</a>
+                <a href="#elefante" class="sidebar-link sidebar-sub">• Elefante da Guerra</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#assedio" class="sidebar-link">💥 Macchine d'Assedio</a>
+                <a href="#ariete" class="sidebar-link sidebar-sub">• Ariete</a>
+                <a href="#torre" class="sidebar-link sidebar-sub">• Torre d'Assedio</a>
+                <a href="#catapulta" class="sidebar-link sidebar-sub">• Catapulta</a>
+                <a href="#ballista" class="sidebar-link sidebar-sub">• Ballista</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#marina" class="sidebar-link">⚓ Marina Militare</a>
+                <a href="#trasporto" class="sidebar-link sidebar-sub">• Nave da Trasporto</a>
+                <a href="#bireme" class="sidebar-link sidebar-sub">• Bireme</a>
+                <a href="#trireme" class="sidebar-link sidebar-sub">• Trireme</a>
+                <a href="#quadrireme" class="sidebar-link sidebar-sub">• Quadrireme</a>
+                <a href="#quinquereme" class="sidebar-link sidebar-sub">• Quinquereme</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#riepilogo" class="sidebar-link">📊 Riepilogo</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            [Sito per la costruzione dell'esercito] - Lista Truppe e Prezzi
+        </div>
+        
+        <!-- TRUPPE DI TERRA -->
+        <div class="troop-category" id="truppe-terra">
+            <h2 class="category-header">⚔️ TRUPPE DI TERRA</h2>
+            
+            <div class="troop-grid">
+                <div class="troop-card" id="milizia">
+                    <div class="troop-title">
+                        1 centuria di Milizia cittadina
+                        <span class="troop-price">$20.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Reclute locali con equipaggiamento leggero e scarso addestramento. Utili in difesa urbana o in territorio conosciuto, ma non reggono l'urto in campo aperto. Il loro punto di forza è il numero, non la qualità.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="fanteria-leggera">
+                    <div class="troop-title">
+                        1 centuria di fanteria leggera
+                        <span class="troop-price">$35.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Truppe mobili armate con giavellotti, frombe o armi leggere. Specializzate in schermaglie, imboscate e disturbo delle linee nemiche prima dello scontro principale. Indispensabili per logorare il nemico senza impegnarsi in mischia.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="fanteria-pesante">
+                    <div class="troop-title">
+                        1 centuria di fanteria pesante
+                        <span class="troop-price">$50.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Il cuore dell'esercito. Soldati con scudo pesante, lancia, spada corta, elmo e corazza. Regge l'urto della battaglia, sfonda le linee nemiche e tiene la posizione. Senza di loro, un esercito non può dirsi tale.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="falangiti">
+                    <div class="troop-title">
+                        Falangiti macedoni
+                        <span class="troop-price">$60.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Fanteria pesante armata di sarissa, la lancia lunga fino a sei metri. Combattono in formazione serrata, presentando una selva di punte al nemico. Quasi impenetrabili frontalmente, ma vulnerabili sui fianchi e su terreni accidentati. Reclutabili solo in Macedonia e Grecia.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Reclutabili solo in Macedonia e Grecia</span>
+                        <div class="enable-checkbox">
+                            <input type="checkbox" class="region-check" id="enable-falangiti">
+                            <label for="enable-falangiti">Abilita reclutamento</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="arcieri">
+                    <div class="troop-title">
+                        1 centuria di arcieri
+                        <span class="troop-price">$45.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Truppe da tiro capaci di infliggere perdite prima del contatto. Efficaci contro fanteria leggera e nel supporto alle linee principali. La loro gittata e cadenza di tiro li rendono preziosi in ogni fase della battaglia.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="frombolieri">
+                    <div class="troop-title">
+                        Frombolieri delle Baleari
+                        <span class="troop-price">$45.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Frombolieri addestrati all'uso della fionda fin dall'infanzia, celebri per precisione e potenza. Gittata superiore agli arcieri comuni, colpiscono senza armatura, veloci e letali. Reclutabili solo nelle Baleari o come mercenari.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Reclutabili solo nelle Baleari o come mercenari</span>
+                        <div class="enable-checkbox">
+                            <input type="checkbox" class="region-check" id="enable-frombolieri">
+                            <label for="enable-frombolieri">Abilita reclutamento</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CAVALLERIA -->
+        <div class="troop-category" id="cavalleria">
+            <h2 class="category-header">🐴 CAVALLERIA</h2>
+            
+            <div class="troop-grid">
+                <div class="troop-card" id="numida">
+                    <div class="troop-title">
+                        Cavalleria numida
+                        <span class="troop-price">$55.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Cavalleria leggera senza sella né briglie, controllata con ginocchia e verga. Cavalieri armati di giavellotti che incalzano il nemico con rapide incursioni per poi fuggire. Non sostengono la carica, ma logorano e disorientano. Reclutabili solo in Numidia.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Reclutabili solo in Numidia</span>
+                        <div class="enable-checkbox">
+                            <input type="checkbox" class="region-check" id="enable-numida">
+                            <label for="enable-numida">Abilita reclutamento</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="cav-leggera">
+                    <div class="troop-title">
+                        1 centuria di Cavalleria leggera
+                        <span class="troop-price">$60.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Reparti veloci e manovrieri. Utilizzati per ricognizione, inseguimento e attacchi sui fianchi. Ideali per disperdere formazioni disorganizzate e colpire dove il nemico è più debole.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="cav-pesante">
+                    <div class="troop-title">
+                        1 centuria di cavalleria pesante
+                        <span class="troop-price">$110.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Cavalleria corazzata con maggiore impatto in carica. Devastante contro fanteria scoperta e unità già in difficoltà. Vulnerabile su terreni difficili e se la carica viene assorbita.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="catafratta">
+                    <div class="troop-title">
+                        Cavalleria catafratta
+                        <span class="troop-price">$150.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Cavalleria pesantemente corazzata con scaglie metalliche che proteggono cavallo e cavaliere. Armata di lance lunghe, sfonda le linee nemiche con cariche inarrestabili in pianura. Lenta, costosissima, ma quasi invincibile frontalmente. Utilizzata da Seleucidi e regni orientali.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Utilizzata da Seleucidi e regni orientali</span>
+                        <div class="enable-checkbox">
+                            <input type="checkbox" class="region-check" id="enable-catafratta">
+                            <label for="enable-catafratta">Abilita reclutamento</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="elefante">
+                    <div class="troop-title">
+                        1 Elefante da guerra
+                        <span class="troop-price">$500.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Bestie imponenti che seminano panico tra le file nemiche. Possono spezzare qualsiasi formazione, calpestare la fanteria e atterrire persino la cavalleria. Difficili da controllare: se feriti o spaventati, travolgono anche le proprie linee. Cartagine e Seleucidi.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Cartagine e Seleucidi</span>
+                        <div class="enable-checkbox">
+                            <input type="checkbox" class="region-check" id="enable-elefante">
+                            <label for="enable-elefante">Abilita reclutamento</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MACCHINE D'ASSEDIO -->
+        <div class="troop-category" id="assedio">
+            <h2 class="category-header">💥 MACCHINE D'ASSEDIO</h2>
+            
+            <div class="troop-grid">
+                <div class="troop-card" id="ariete">
+                    <div class="troop-title">
+                        Ariete
+                        <span class="troop-price">$175.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Trave pesante, spesso metallica, utilizzata per sfondare porte e battere mura. Richiede protezione costante da arcieri e fuoco nemico durante l'avvicinamento e l'impiego.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="torre">
+                    <div class="troop-title">
+                        Torre d'assedio
+                        <span class="troop-price">$225.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Struttura mobile in legno, alta quanto le mura nemiche. Permette di superare le fortificazioni e gettare ponti sulle difese. Lenta, vulnerabile al fuoco, ma decisiva se impiegata con successo.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="catapulta">
+                    <div class="troop-title">
+                        Catapulta
+                        <span class="troop-price">$190.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Arma da lancio che scaglia pietre contro mura, torri e truppe nemiche. Fondamentale per indebolire le difese prima dell'assalto o per colpire a distanza in battaglia campale.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="ballista">
+                    <div class="troop-title">
+                        Ballista
+                        <span class="troop-price">$190.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Arma da lancio di precisione, simile a una balestra gigante. Impiegata contro truppe nemiche e macchine d'assedio, ma efficace anche contro mura e fortificazioni leggere. Può essere usata sia in assedio che in battaglia campale.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MARINA MILITARE -->
+        <div class="troop-category" id="marina">
+            <h2 class="category-header">⚓ MARINA MILITARE</h2>
+            
+            <div class="troop-grid">
+                <div class="troop-card" id="trasporto">
+                    <div class="troop-title">
+                        Nave da trasporto
+                        <span class="troop-price">$30.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Utilizzata per trasportare truppe via mare (2 centurie per nave). Lenta, poco manovriera e scarsamente armata. Necessita di scorta in acque nemiche.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="bireme">
+                    <div class="troop-title">
+                        Bireme
+                        <span class="troop-price">$130.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Nave da guerra leggera e veloce, con due ordini di remi. Ideale per pattugliamento, esplorazione e scontri rapidi. Efficace in azioni di disturbo e contro navi da trasporto.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="trireme">
+                    <div class="troop-title">
+                        Trireme
+                        <span class="troop-price">$190.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        La nave da guerra standard dell'epoca, con tre ordini di remi. Dotata di rostro per speronare le navi nemiche. Equilibrata tra velocità e potenza, costituisce la spina dorsale di ogni flotta.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="quadrireme">
+                    <div class="troop-title">
+                        Quadrireme
+                        <span class="troop-price">$300.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        Nave pesante con quattro file di rematori. Maggiore capacità di carico e stabilità. Dominante negli scontri navali, ma più lenta e costosa.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+                
+                <div class="troop-card" id="quinquereme">
+                    <div class="troop-title">
+                        Quinquereme
+                        <span class="troop-price">$400.000</span>
+                    </div>
+                    <div class="troop-desc">
+                        La regina dei mari. Cinque file di rematori, equipaggio numeroso, piattaforma stabile per truppe da abbordaggio. Utilizzata da Cartagine e Roma come nave ammiraglia.
+                    </div>
+                    <div class="troop-limit">
+                        <span class="limit-text">Disponibile a tutti</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RIEPILOGO -->
+        <div class="summary-section" id="riepilogo">
+            <h2 class="summary-title">📊 Riepilogo Truppe</h2>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Truppe di Terra (6)</h3>
+                    <ul class="summary-card-list">
+                        <li>Milizia cittadina - $20.000</li>
+                        <li>Fanteria leggera - $35.000</li>
+                        <li>Fanteria pesante - $50.000</li>
+                        <li>Falangiti macedoni - $60.000*</li>
+                        <li>Arcieri - $45.000</li>
+                        <li>Frombolieri delle Baleari - $45.000*</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Cavalleria (5)</h3>
+                    <ul class="summary-card-list">
+                        <li>Cavalleria numida - $55.000*</li>
+                        <li>Cavalleria leggera - $60.000</li>
+                        <li>Cavalleria pesante - $110.000</li>
+                        <li>Cavalleria catafratta - $150.000*</li>
+                        <li>Elefante da guerra - $500.000*</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Macchine d'Assedio (4)</h3>
+                    <ul class="summary-card-list">
+                        <li>Ariete - $175.000</li>
+                        <li>Torre d'assedio - $225.000</li>
+                        <li>Catapulta - $190.000</li>
+                        <li>Ballista - $190.000</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Marina Militare (5)</h3>
+                    <ul class="summary-card-list">
+                        <li>Nave da trasporto - $30.000</li>
+                        <li>Bireme - $130.000</li>
+                        <li>Trireme - $190.000</li>
+                        <li>Quadrireme - $300.000</li>
+                        <li>Quinquereme - $400.000</li>
+                    </ul>
+                </div>
+                
+                <div class="summary-card">
+                    <h3 class="summary-card-title">Legenda</h3>
+                    <ul class="summary-card-list">
+                        <li><strong>*</strong> Unità con limitazioni regionali</li>
+                        <li>Abilita il checkbox per reclutare</li>
+                        <li><strong>20 tipi di unità totali</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>Nota:</strong> Le unità contrassegnate con (*) hanno limitazioni geografiche. È necessario premere il pulsante check affianco per abilitarne il reclutamento.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-item">
+            <p><i>by D.F.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <p><i>Questa pagina è stata creata il 17/12/2025.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="https://www.gnu.org/licenses/gpl-3.0.html"><i>Licenza</i></a>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="#inizio">Torna all'inizio</a>
+        </div>
+    </footer>
+
+    <a href="#inizio" class="back-to-top">↑</a>
+
+    <script>
+        // Smooth scrolling per tutti i link interni
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mostra/nascondi il pulsante "Torna su"
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        // Evidenzia il link attivo nella sidebar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.troop-category, .summary-section');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Aggiunge classe active ai link sidebar
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Gestione checkbox per abilitare visivamente le unità con limitazioni
+        document.querySelectorAll('.region-check').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const troopCard = this.closest('.troop-card');
+                if (this.checked) {
+                    troopCard.classList.add('enabled-troop');
+                } else {
+                    troopCard.classList.remove('enabled-troop');
+                }
+            });
+        });
+        
+        // Stile per link attivo
+        const style = document.createElement('style');
+        style.textContent = `
+            .sidebar-link.active {
+                background-color: rgba(228, 28, 28, 0.2);
+                border-left: 4px solid #e41c1c;
+                color: white;
+            }
+            
+            .back-to-top {
+                display: none;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
