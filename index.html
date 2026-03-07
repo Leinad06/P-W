@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Exercitus Romanvs - Seconda Guerra Punica [217 a.C.]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-image: linear-gradient(#8B5A2B, #5D3A1A);
+            font-family: 'Palatino', 'Georgia', serif;
+            color: #F0E6D2;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-color: #6B4F3A;
+        }
+        
+        /* Header */
+        header {
+            height: 70px;
+            background-color: #4A2C1A;
+            border-bottom: solid 8px #C47E3A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .quote {
+            color: #E6BE8A;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-shadow: 2px 2px 2px #2A1A0A;
+        }
+        
+        /* Sidebar */
+        .sidebar-container {
+            position: fixed;
+            left: 0;
+            top: 70px;
+            width: 280px;
+            height: calc(100vh - 70px);
+            background: linear-gradient(180deg, #7A5C3A, #4A2C1A 100%);
+            overflow-y: auto;
+            z-index: 900;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
+            border-right: 2px solid #C47E3A;
+        }
+        
+        .sidebar {
+            padding: 20px 0;
+        }
+        
+        .sidebar-title {
+            font-size: 1.4rem;
+            color: #E6BE8A;
+            font-weight: bold;
+            margin: 15px 20px 10px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #C47E3A;
+            text-shadow: 2px 2px 2px #2A1A0A;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-link {
+            display: block;
+            color: #F0E6D2;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-left: 5px solid transparent;
+            font-size: 1rem;
+            text-shadow: 1px 1px 1px #000;
+        }
+        
+        .sidebar-link:hover {
+            background-color: rgba(196, 126, 58, 0.3);
+            border-left: 5px solid #E6BE8A;
+            padding-left: 25px;
+        }
+        
+        .sidebar-sub {
+            padding-left: 40px;
+            font-size: 0.9rem;
+            color: #E6BE8A;
+        }
+        
+        /* Scrollbar */
+        .sidebar-container::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-track {
+            background: #2A1A0A;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb {
+            background: #C47E3A;
+            border-radius: 5px;
+            border: 2px solid #4A2C1A;
+        }
+        
+        .sidebar-container::-webkit-scrollbar-thumb:hover {
+            background: #E6BE8A;
+        }
+        
+        /* Contenuto principale */
+        .main-content {
+            margin-left: 280px;
+            margin-top: 70px;
+            padding: 30px;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #4A2C1A, #2A1A0A);
+            color: #E6BE8A;
+            padding: 25px;
+            border-radius: 15px 50px 15px 50px;
+            margin-bottom: 40px;
+            font-size: 1.6rem;
+            text-align: center;
+            border: 3px solid #C47E3A;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: "⚔️";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        
+        .page-header::after {
+            content: "⚔️";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        
+        /* Sezione Calcolatore */
+        .calculator-section {
+            background: linear-gradient(145deg, #5D3A1A, #3A2A1A);
+            border: 3px solid #C47E3A;
+            border-radius: 20px 5px 20px 5px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        .calculator-section::before {
+            content: "🏛️";
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 2rem;
+            background: #5D3A1A;
+            padding: 0 15px;
+            border-radius: 50%;
+        }
+        
+        .calculator-title {
+            color: #E6BE8A;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 3px 3px 0 #2A1A0A;
+            border-bottom: 2px dashed #C47E3A;
+            padding-bottom: 15px;
+        }
+        
+        .calculator-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .budget-input {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .budget-input label {
+            font-weight: bold;
+            color: #E6BE8A;
+            font-size: 1.2rem;
+        }
+        
+        .budget-input input {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid #C47E3A;
+            background-color: #2A1A0A;
+            color: #F0E6D2;
+            font-size: 1.1rem;
+            width: 180px;
+            font-weight: bold;
+        }
+        
+        .calculator-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .calculator-btn {
+            padding: 10px 25px;
+            background-color: #C47E3A;
+            color: #2A1A0A;
+            border: 2px solid #E6BE8A;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .calculator-btn:hover {
+            background-color: #E6BE8A;
+            border-color: #C47E3A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .calculator-btn.clear {
+            background-color: #8B4513;
+            color: #F0E6D2;
+        }
+        
+        .calculator-btn.clear:hover {
+            background-color: #A0522D;
+        }
+        
+        .calculator-summary {
+            background: linear-gradient(135deg, #4A2C1A, #2A1A0A);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            border: 2px solid #C47E3A;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(196, 126, 58, 0.1);
+            border-radius: 8px;
+        }
+        
+        .summary-label {
+            color: #E6BE8A;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .summary-value {
+            color: #F0E6D2;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #2A1A0A;
+        }
+        
+        .summary-value.total {
+            color: #FFD700;
+            font-size: 2rem;
+        }
+        
+        .budget-status {
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            background: #2A1A0A;
+        }
+        
+        .budget-status.within {
+            background-color: #2A5A2A;
+            color: #ADFF2F;
+            border: 2px solid #ADFF2F;
+        }
+        
+        .budget-status.exceeded {
+            background-color: #5A2A2A;
+            color: #FF6B6B;
+            border: 2px solid #FF6B6B;
+        }
+        
+        /* Unità Category */
+        .unit-category {
+            margin-bottom: 60px;
+            background: linear-gradient(145deg, #5D3A1A, #3A2A1A);
+            border-radius: 15px 5px 15px 5px;
+            padding: 30px;
+            border: 3px solid #C47E3A;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        
+        .unit-category::before {
+            content: "🏺";
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 2rem;
+            background: #5D3A1A;
+            padding: 0 15px;
+            border-radius: 50%;
+        }
+        
+        .category-header {
+            font-size: 2.5rem;
+            color: #E6BE8A;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #C47E3A;
+            text-shadow: 3px 3px 0 #2A1A0A;
+            position: relative;
+            text-align: center;
+            font-family: 'Palatino', serif;
+        }
+        
+        .category-header small {
+            font-size: 1.2rem;
+            color: #F0E6D2;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .unit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+        
+        .unit-card {
+            background: linear-gradient(135deg, #4A2C1A, #2A1A0A);
+            border: 3px solid #C47E3A;
+            border-radius: 10px 30px 10px 30px;
+            padding: 25px;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .unit-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(196, 126, 58, 0.3);
+            border-color: #E6BE8A;
+        }
+        
+        .unit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(196, 126, 58, 0.5);
+        }
+        
+        .unit-name {
+            color: #E6BE8A;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #2A1A0A;
+        }
+        
+        .unit-price {
+            background: linear-gradient(135deg, #C47E3A, #8B4513);
+            color: #F0E6D2;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: 2px solid #E6BE8A;
+        }
+        
+        .unit-type {
+            display: inline-block;
+            background: rgba(196, 126, 58, 0.3);
+            color: #E6BE8A;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border: 1px solid #C47E3A;
+            font-style: italic;
+        }
+        
+        .unit-type.legendary {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+        
+        .unit-description {
+            font-size: 1rem;
+            color: #F0E6D2;
+            line-height: 1.7;
+            margin-top: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 5px solid #C47E3A;
+            font-style: italic;
+        }
+        
+        .condition-badge {
+            background-color: #8B4513;
+            color: #FFD700;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #C47E3A;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        .condition-badge::before {
+            content: "⚠️";
+            font-size: 1.1rem;
+        }
+        
+        .condition-met {
+            background-color: #2A5A2A;
+            border-color: #ADFF2F;
+        }
+        
+        .condition-met::before {
+            content: "✅";
+        }
+        
+        .condition-not-met {
+            background-color: #5A2A2A;
+            border-color: #FF6B6B;
+        }
+        
+        .condition-not-met::before {
+            content: "❌";
+        }
+        
+        .unit-stats {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(196, 126, 58, 0.2);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            color: #E6BE8A;
+            border: 1px dashed #C47E3A;
+        }
+        
+        .unit-stats strong {
+            color: #FFD700;
+        }
+        
+        /* Controlli quantità */
+        .unit-controls {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #C47E3A;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #C47E3A, #8B4513);
+            color: #F0E6D2;
+            border: 2px solid #E6BE8A;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 3px 0 #4A2C1A;
+        }
+        
+        .quantity-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #E6BE8A, #C47E3A);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 0 #4A2C1A;
+        }
+        
+        .quantity-btn:disabled {
+            background: #5A5A5A;
+            border-color: #888;
+            box-shadow: 0 3px 0 #333;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .quantity-input {
+            width: 70px;
+            padding: 8px;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid #C47E3A;
+            background-color: #2A1A0A;
+            color: #F0E6D2;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .unit-total {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 1.3rem;
+            text-shadow: 2px 2px 0 #2A1A0A;
+        }
+        
+        /* Selettore Stati */
+        .state-selector {
+            background: linear-gradient(145deg, #5D3A1A, #3A2A1A);
+            border: 3px solid #C47E3A;
+            border-radius: 15px 5px 15px 5px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .state-title {
+            color: #E6BE8A;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 0 #2A1A0A;
+        }
+        
+        .state-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .state-item {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #C47E3A;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .state-item:hover {
+            background: rgba(196,126,58,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .state-item.selected {
+            background: linear-gradient(135deg, #C47E3A, #8B4513);
+            border-color: #E6BE8A;
+        }
+        
+        .state-name {
+            color: #E6BE8A;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .state-desc {
+            color: #F0E6D2;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .state-allies {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 2px dashed #C47E3A;
+        }
+        
+        .allies-title {
+            color: #E6BE8A;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .allies-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .allies-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #F0E6D2;
+            cursor: pointer;
+        }
+        
+        .allies-checkboxes input {
+            width: 18px;
+            height: 18px;
+            accent-color: #C47E3A;
+        }
+        
+        /* Icone */
+        .unit-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            vertical-align: middle;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .icon-infantry {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C47E3A"><path d="M12 2 L8 8 L16 8 L12 2 Z M8 9 L6 20 L9 20 L9 12 L15 12 L15 20 L18 20 L16 9 L8 9 Z"/></svg>');
+        }
+        
+        .icon-cavalry {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C47E3A"><path d="M5 15 L8 10 L12 8 L16 10 L19 15 L16 18 L12 19 L8 18 L5 15 Z M10 8 L12 5 L14 8 L12 11 L10 8 Z"/></svg>');
+        }
+        
+        .icon-siege {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C47E3A"><rect x="4" y="12" width="16" height="6" fill="%23C47E3A"/><rect x="6" y="6" width="12" height="6" fill="%23C47E3A"/><circle cx="12" cy="15" r="2" fill="%23E6BE8A"/></svg>');
+        }
+        
+        .icon-navy {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C47E3A"><path d="M3 16 L21 16 L19 20 L5 20 L3 16 Z M6 12 L18 12 L16 8 L8 8 L6 12 Z"/></svg>');
+        }
+        
+        /* Note box */
+        .note-box {
+            background: rgba(196, 126, 58, 0.2);
+            border-left: 8px solid #C47E3A;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+            font-style: italic;
+            border: 2px solid #C47E3A;
+            background: linear-gradient(145deg, #4A2C1A, #2A1A0A);
+        }
+        
+        .note-box strong {
+            color: #FFD700;
+        }
+        
+        /* Export section */
+        .export-section {
+            background: linear-gradient(145deg, #5D3A1A, #3A2A1A);
+            border: 3px solid #C47E3A;
+            border-radius: 20px 5px 20px 5px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .export-title {
+            color: #E6BE8A;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 0 #2A1A0A;
+        }
+        
+        .export-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .export-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #C47E3A, #8B4513);
+            color: #F0E6D2;
+            border: 2px solid #E6BE8A;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .export-btn:hover {
+            background: linear-gradient(135deg, #E6BE8A, #C47E3A);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .export-btn.copy {
+            background: linear-gradient(135deg, #2A5A5A, #1A3A3A);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #4A2C1A, #2A1A0A);
+            border-top: 8px solid #C47E3A;
+            color: #F0E6D2;
+            padding: 25px;
+            margin-top: 60px;
+            margin-left: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-style: italic;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .separator {
+            color: #C47E3A;
+            font-size: 1.5rem;
+        }
+        
+        footer a {
+            color: #E6BE8A;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+        
+        footer a:hover {
+            color: #FFD700;
+            text-decoration: underline;
+        }
+        
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #C47E3A, #8B4513);
+            color: #F0E6D2;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            z-index: 1000;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s;
+            border: 3px solid #E6BE8A;
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #E6BE8A, #C47E3A);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar-container {
+                width: 240px;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            footer {
+                margin-left: 240px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar-container {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                max-height: 50vh;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+            }
+            
+            footer {
+                margin-left: 0;
+            }
+            
+            .unit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .category-header {
+                font-size: 2rem;
+            }
+            
+            .unit-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .unit-price {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="inizio">
+        <div class="header-content">
+            <span class="quote">"Hannibal ad portas!" - Annibale alle porte! (217 a.C.)</span>
+        </div>
+    </header>
+
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <div class="sidebar-title">SECONDA GVERRA PVNICA</div>
+            
+            <div class="sidebar-section">
+                <a href="#calculator" class="sidebar-link">🏛️ CALCOLATORE</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#stati" class="sidebar-link">🗺️ SELEZIONE STATI</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#truppe-terra" class="sidebar-link">⚔️ FANTERIA</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#cavalleria" class="sidebar-link">🐴 CAVALLERIA</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#macchine-assedio" class="sidebar-link">💥 MACCHINE D'ASSEDIO</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#marina" class="sidebar-link">⚓ MARINA MILITARE</a>
+            </div>
+            
+            <div class="sidebar-section">
+                <a href="#esporta" class="sidebar-link">📦 ESPORTA</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-header">
+            EXERCITVS - Seconda Guerra Punica (217 a.C.)
+        </div>
+        
+        <!-- CALCOLATORE -->
+        <div class="calculator-section" id="calculator">
+            <h2 class="calculator-title">Aerarium - Calcolatore</h2>
+            
+            <div class="calculator-controls">
+                <div class="budget-input">
+                    <label for="budget">Aerarium ($):</label>
+                    <input type="number" id="budget" value="1000000" min="0" step="1000">
+                </div>
+                
+                <div class="calculator-buttons">
+                    <button class="calculator-btn" id="updateBtn">Aggiorna</button>
+                    <button class="calculator-btn clear" id="clearBtn">Azzera</button>
+                </div>
+            </div>
+            
+            <div class="calculator-summary">
+                <div class="summary-item">
+                    <div class="summary-label">Costo Totale</div>
+                    <div class="summary-value total" id="totalCost">$0</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">Unità Totali</div>
+                    <div class="summary-value" id="totalUnits">0</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">Aerarium Rimanente</div>
+                    <div class="summary-value" id="remainingBudget">$1,000,000</div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-label">% Spesa</div>
+                    <div class="summary-value" id="spentPercentage">0%</div>
+                </div>
+            </div>
+            
+            <div id="budgetStatus" class="budget-status within">
+                Aerarium rispettato ✓
+            </div>
+        </div>
+        
+        <!-- SELEZIONE STATI -->
+        <div class="state-selector" id="stati">
+            <h2 class="state-title">🗺️ SELEZIONA IL TUO STATO</h2>
+            <p style="color: #F0E6D2; text-align: center; margin-bottom: 20px;">Le unità disponibili dipendono dallo stato che controlli e dagli alleati</p>
+            
+            <div class="state-grid">
+                <div class="state-item" id="state-roma" onclick="selectState('roma')">
+                    <div class="state-name">🏛️ ROMA</div>
+                    <div class="state-desc">Fanteria pesante, legioni, alleati italici</div>
+                </div>
+                <div class="state-item" id="state-cartagine" onclick="selectState('cartagine')">
+                    <div class="state-name">🐘 CARTAGINE</div>
+                    <div class="state-desc">Mercenari, elefanti, alleati numidi</div>
+                </div>
+                <div class="state-item" id="state-macedonia" onclick="selectState('macedonia')">
+                    <div class="state-name">⚔️ MACEDONIA</div>
+                    <div class="state-desc">Falangiti, cavalleria tessala</div>
+                </div>
+                <div class="state-item" id="state-seleucidi" onclick="selectState('seleucidi')">
+                    <div class="state-name">🗡️ SELEUCIDI</div>
+                    <div class="state-desc">Catafratti, elefanti, arcieri orientali</div>
+                </div>
+                <div class="state-item" id="state-numidia" onclick="selectState('numidia')">
+                    <div class="state-name">🐫 NUMIDIA</div>
+                    <div class="state-desc">Cavalleria numida, frombolieri</div>
+                </div>
+                <div class="state-item" id="state-baleari" onclick="selectState('baleari')">
+                    <div class="state-name">🏝️ ISOLE BALEARI</div>
+                    <div class="state-desc">Frombolieri, mercenari</div>
+                </div>
+            </div>
+            
+            <div class="state-allies">
+                <div class="allies-title">🤝 ALLEATI E MERCENARI</div>
+                <div class="allies-checkboxes">
+                    <label>
+                        <input type="checkbox" id="ally-numidia" onchange="updateAllies()"> Numidia alleata
+                    </label>
+                    <label>
+                        <input type="checkbox" id="ally-baleari" onchange="updateAllies()"> Baleari alleate
+                    </label>
+                    <label>
+                        <input type="checkbox" id="ally-gallia" onchange="updateAllies()"> Galli alleati (sempre disponibili)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="ally-grecia" onchange="updateAllies()"> Grecia alleata
+                    </label>
+                </div>
+                <p style="color: #ADFF2F; margin-top: 10px; font-size: 0.9rem;">✅ I Galli sono sempre disponibili come alleati</p>
+            </div>
+        </div>
+        
+        <!-- TRUPPE DI TERRA -->
+        <div class="unit-category" id="truppe-terra">
+            <h2 class="category-header">⚔️ FANTERIA <small>Pedites</small></h2>
+            
+            <div class="unit-grid">
+                <!-- Milizia cittadina -->
+                <div class="unit-card" data-unit="milizia" data-price="20000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Milizia cittadina
+                        </div>
+                        <div class="unit-price">$20.000</div>
+                    </div>
+                    <div class="unit-type">Centuria (80-100 uomini)</div>
+                    <div class="unit-description">
+                        Reclute locali con equipaggiamento leggero. Utili in difesa urbana, ma non reggono l'urto in campo aperto.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('milizia', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-milizia" value="0" min="0" onchange="updateUnitTotal('milizia')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('milizia', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-milizia">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Fanteria leggera -->
+                <div class="unit-card" data-unit="fanteria-leggera" data-price="35000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Fanteria leggera
+                        </div>
+                        <div class="unit-price">$35.000</div>
+                    </div>
+                    <div class="unit-type">Centuria (80-100 uomini)</div>
+                    <div class="unit-description">
+                        Truppe mobili armate con giavellotti. Specializzate in schermaglie e imboscate.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('fanteria-leggera', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-fanteria-leggera" value="0" min="0" onchange="updateUnitTotal('fanteria-leggera')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('fanteria-leggera', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-fanteria-leggera">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Fanteria pesante -->
+                <div class="unit-card" data-unit="fanteria-pesante" data-price="50000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Fanteria pesante
+                        </div>
+                        <div class="unit-price">$50.000</div>
+                    </div>
+                    <div class="unit-type">Centuria (80-100 uomini)</div>
+                    <div class="unit-description">
+                        Il cuore dell'esercito. Soldati con scudo, lancia, gladio e corazza. La spina dorsale di ogni legione.
+                    </div>
+                    <div class="condition-badge" id="cond-fanteria-pesante">⚠️ Richiede: Roma o alleati</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('fanteria-pesante', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-fanteria-pesante" value="0" min="0" onchange="updateUnitTotal('fanteria-pesante')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('fanteria-pesante', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-fanteria-pesante">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Arcieri -->
+                <div class="unit-card" data-unit="arcieri" data-price="45000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Arcieri
+                        </div>
+                        <div class="unit-price">$45.000</div>
+                    </div>
+                    <div class="unit-type">Centuria (80-100 arcieri)</div>
+                    <div class="unit-description">
+                        Truppe da tiro per infliggere perdite prima del contatto. Efficaci contro fanteria leggera.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('arcieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-arcieri" value="0" min="0" onchange="updateUnitTotal('arcieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('arcieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-arcieri">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Falangiti macedoni -->
+                <div class="unit-card" data-unit="falangiti" data-price="60000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Falangiti macedoni
+                        </div>
+                        <div class="unit-price">$60.000</div>
+                    </div>
+                    <div class="unit-type legendary">Centuria di Falangiti</div>
+                    <div class="unit-description">
+                        Fanteria pesante armata di sarissa (lancia lunga fino a 6 metri). Quasi impenetrabili frontalmente, vulnerabili sui fianchi.
+                    </div>
+                    <div class="condition-badge" id="cond-falangiti">⚠️ Richiede: Macedonia o Grecia alleata</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('falangiti', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-falangiti" value="0" min="0" onchange="updateUnitTotal('falangiti')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('falangiti', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-falangiti">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Frombolieri delle Baleari -->
+                <div class="unit-card" data-unit="frombolieri" data-price="45000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-infantry"></span>
+                            Frombolieri delle Baleari
+                        </div>
+                        <div class="unit-price">$45.000</div>
+                    </div>
+                    <div class="unit-type legendary">Centuria di Frombolieri</div>
+                    <div class="unit-description">
+                        Frombolieri addestrati fin dall'infanzia, celebri per precisione e potenza. Gittata superiore agli arcieri comuni.
+                    </div>
+                    <div class="condition-badge" id="cond-frombolieri">⚠️ Richiede: Baleari, Cartagine o mercenari</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('frombolieri', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-frombolieri" value="0" min="0" onchange="updateUnitTotal('frombolieri')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('frombolieri', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-frombolieri">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CAVALLERIA -->
+        <div class="unit-category" id="cavalleria">
+            <h2 class="category-header">🐴 CAVALLERIA <small>Equites</small></h2>
+            
+            <div class="unit-grid">
+                <!-- Cavalleria numida -->
+                <div class="unit-card" data-unit="numidi" data-price="55000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Cavalleria numida
+                        </div>
+                        <div class="unit-price">$55.000</div>
+                    </div>
+                    <div class="unit-type legendary">Turma (30 cavalieri)</div>
+                    <div class="unit-description">
+                        Cavalleria leggera senza sella né briglie. Armati di giavellotti, incalzano il nemico con rapide incursioni.
+                    </div>
+                    <div class="condition-badge" id="cond-numidi">⚠️ Richiede: Numidia, Cartagine o alleati</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('numidi', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-numidi" value="0" min="0" onchange="updateUnitTotal('numidi')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('numidi', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-numidi">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Cavalleria leggera -->
+                <div class="unit-card" data-unit="cavalleria-leggera" data-price="60000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Cavalleria leggera
+                        </div>
+                        <div class="unit-price">$60.000</div>
+                    </div>
+                    <div class="unit-type">Turma (30 cavalieri)</div>
+                    <div class="unit-description">
+                        Reparti veloci per ricognizione, inseguimento e attacchi sui fianchi. Ideali per disperdere formazioni disorganizzate.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('cavalleria-leggera', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-cavalleria-leggera" value="0" min="0" onchange="updateUnitTotal('cavalleria-leggera')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('cavalleria-leggera', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-cavalleria-leggera">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Cavalleria pesante -->
+                <div class="unit-card" data-unit="cavalleria-pesante" data-price="110000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Cavalleria pesante
+                        </div>
+                        <div class="unit-price">$110.000</div>
+                    </div>
+                    <div class="unit-type">Turma (30 cavalieri)</div>
+                    <div class="unit-description">
+                        Cavalleria corazzata con maggiore impatto in carica. Devastante contro fanteria scoperta.
+                    </div>
+                    <div class="condition-badge" id="cond-cavalleria-pesante">⚠️ Richiede: Roma, Cartagine o alleati maggiori</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('cavalleria-pesante', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-cavalleria-pesante" value="0" min="0" onchange="updateUnitTotal('cavalleria-pesante')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('cavalleria-pesante', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-cavalleria-pesante">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Cavalleria catafratta -->
+                <div class="unit-card" data-unit="catafratti" data-price="150000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Cavalleria catafratta
+                        </div>
+                        <div class="unit-price">$150.000</div>
+                    </div>
+                    <div class="unit-type legendary">Turma (20 cavalieri)</div>
+                    <div class="unit-description">
+                        Cavalleria pesantemente corazzata con scaglie metalliche che proteggono cavallo e cavaliere. Sfonda le linee nemiche con cariche inarrestabili.
+                    </div>
+                    <div class="condition-badge" id="cond-catafratti">⚠️ Richiede: Seleucidi o regni orientali</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('catafratti', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-catafratti" value="0" min="0" onchange="updateUnitTotal('catafratti')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('catafratti', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-catafratti">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Elefante da guerra -->
+                <div class="unit-card" data-unit="elefante" data-price="500000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-cavalry"></span>
+                            Elefante da guerra
+                        </div>
+                        <div class="unit-price">$500.000</div>
+                    </div>
+                    <div class="unit-type legendary">Singolo elefante</div>
+                    <div class="unit-description">
+                        Bestie imponenti che seminano panico tra le file nemiche. Usati da Annibale attraverso le Alpi. Rischio di panico se feriti.
+                    </div>
+                    <div class="condition-badge" id="cond-elefante">⚠️ Richiede: Cartagine o Seleucidi</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('elefante', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-elefante" value="0" min="0" onchange="updateUnitTotal('elefante')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('elefante', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-elefante">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MACCHINE D'ASSEDIO -->
+        <div class="unit-category" id="macchine-assedio">
+            <h2 class="category-header">💥 MACCHINE D'ASSEDIO <small>Machinae</small></h2>
+            
+            <div class="unit-grid">
+                <!-- Ariete -->
+                <div class="unit-card" data-unit="ariete" data-price="175000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-siege"></span>
+                            Ariete
+                        </div>
+                        <div class="unit-price">$175.000</div>
+                    </div>
+                    <div class="unit-type">Singola macchina</div>
+                    <div class="unit-description">
+                        Trave pesante, spesso metallica, utilizzata per sfondare porte e battere mura. Richiede protezione costante.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('ariete', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-ariete" value="0" min="0" onchange="updateUnitTotal('ariete')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('ariete', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-ariete">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Torre d'assedio -->
+                <div class="unit-card" data-unit="torre" data-price="225000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-siege"></span>
+                            Torre d'assedio
+                        </div>
+                        <div class="unit-price">$225.000</div>
+                    </div>
+                    <div class="unit-type">Singola torre</div>
+                    <div class="unit-description">
+                        Struttura mobile in legno, alta quanto le mura nemiche. Permette di superare le fortificazioni. Vulnerabile al fuoco.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('torre', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-torre" value="0" min="0" onchange="updateUnitTotal('torre')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('torre', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-torre">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Catapulta -->
+                <div class="unit-card" data-unit="catapulta" data-price="190000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-siege"></span>
+                            Catapulta
+                        </div>
+                        <div class="unit-price">$190.000</div>
+                    </div>
+                    <div class="unit-type">Singola macchina</div>
+                    <div class="unit-description">
+                        Scaglia pietre contro mura, torri e truppe nemiche. Fondamentale per indebolire le difese prima dell'assalto.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('catapulta', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-catapulta" value="0" min="0" onchange="updateUnitTotal('catapulta')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('catapulta', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-catapulta">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Ballista -->
+                <div class="unit-card" data-unit="ballista" data-price="190000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-siege"></span>
+                            Ballista
+                        </div>
+                        <div class="unit-price">$190.000</div>
+                    </div>
+                    <div class="unit-type">Singola macchina</div>
+                    <div class="unit-description">
+                        Arma di precisione, simile a una balestra gigante. Impiegata contro truppe e macchine d'assedio nemiche.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('ballista', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-ballista" value="0" min="0" onchange="updateUnitTotal('ballista')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('ballista', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-ballista">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MARINA MILITARE -->
+        <div class="unit-category" id="marina">
+            <h2 class="category-header">⚓ MARINA MILITARE <small>Classis</small></h2>
+            
+            <div class="unit-grid">
+                <!-- Nave da trasporto -->
+                <div class="unit-card" data-unit="trasporto" data-price="30000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-navy"></span>
+                            Nave da trasporto
+                        </div>
+                        <div class="unit-price">$30.000</div>
+                    </div>
+                    <div class="unit-type">Singola nave</div>
+                    <div class="unit-description">
+                        Utilizzata per trasportare truppe via mare (2 centurie per nave). Lenta, poco manovriera e scarsamente armata. Necessita di scorta.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('trasporto', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-trasporto" value="0" min="0" onchange="updateUnitTotal('trasporto')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('trasporto', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-trasporto">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Bireme -->
+                <div class="unit-card" data-unit="bireme" data-price="130000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-navy"></span>
+                            Bireme
+                        </div>
+                        <div class="unit-price">$130.000</div>
+                    </div>
+                    <div class="unit-type">Singola nave</div>
+                    <div class="unit-description">
+                        Nave da guerra leggera e veloce, con due ordini di remi. Ideale per pattugliamento, esplorazione e scontri rapidi.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('bireme', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-bireme" value="0" min="0" onchange="updateUnitTotal('bireme')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('bireme', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-bireme">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Trireme -->
+                <div class="unit-card" data-unit="trireme" data-price="190000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-navy"></span>
+                            Trireme
+                        </div>
+                        <div class="unit-price">$190.000</div>
+                    </div>
+                    <div class="unit-type">Singola nave</div>
+                    <div class="unit-description">
+                        La nave da guerra standard dell'epoca, con tre ordini di remi. Dotata di rostro per speronare. Equilibrata tra velocità e potenza.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('trireme', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-trireme" value="0" min="0" onchange="updateUnitTotal('trireme')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('trireme', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-trireme">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrireme -->
+                <div class="unit-card" data-unit="quadrireme" data-price="300000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-navy"></span>
+                            Quadrireme
+                        </div>
+                        <div class="unit-price">$300.000</div>
+                    </div>
+                    <div class="unit-type">Singola nave</div>
+                    <div class="unit-description">
+                        Nave pesante con quattro file di rematori. Maggiore capacità di carico e stabilità. Dominante negli scontri navali, ma più lenta.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('quadrireme', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-quadrireme" value="0" min="0" onchange="updateUnitTotal('quadrireme')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('quadrireme', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-quadrireme">$0</div>
+                    </div>
+                </div>
+                
+                <!-- Quinquereme -->
+                <div class="unit-card" data-unit="quinquereme" data-price="400000">
+                    <div class="unit-header">
+                        <div class="unit-name">
+                            <span class="unit-icon icon-navy"></span>
+                            Quinquereme
+                        </div>
+                        <div class="unit-price">$400.000</div>
+                    </div>
+                    <div class="unit-type legendary">Singola nave</div>
+                    <div class="unit-description">
+                        La regina dei mari. Cinque file di rematori, equipaggio numeroso, piattaforma stabile per truppe da abbordaggio. Nave ammiraglia.
+                    </div>
+                    <div class="condition-badge condition-met">✅ Sempre disponibile</div>
+                    <div class="unit-controls">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" onclick="changeQuantity('quinquereme', -1)">-</button>
+                            <input type="number" class="quantity-input" id="qty-quinquereme" value="0" min="0" onchange="updateUnitTotal('quinquereme')">
+                            <button class="quantity-btn plus" onclick="changeQuantity('quinquereme', 1)">+</button>
+                        </div>
+                        <div class="unit-total" id="total-quinquereme">$0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ESPORTA -->
+        <div class="export-section" id="esporta">
+            <h2 class="export-title">📦 COPIA L'ESERCITO</h2>
+            <div class="export-buttons">
+                <button class="export-btn copy" onclick="copyArmyToClipboard()">📋 Copia negli Appunti</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-item">
+            <p><i>Hannibal ad portas! - 217 a.C.</i></p>
+        </div>
+        <span class="separator">|</span>
+        <div class="footer-item">
+            <a href="#inizio">Torna al Campo</a>
+        </div>
+    </footer>
+
+    <a href="#inizio" class="back-to-top">🏛️</a>
+
+    <script>
+        // Definizione delle unità (COMPLETA con tutte le truppe)
+        const units = {
+            // Fanteria
+            'milizia': { name: 'Milizia cittadina', price: 20000, type: 'Centuria' },
+            'fanteria-leggera': { name: 'Fanteria leggera', price: 35000, type: 'Centuria' },
+            'fanteria-pesante': { name: 'Fanteria pesante', price: 50000, type: 'Centuria' },
+            'arcieri': { name: 'Arcieri', price: 45000, type: 'Centuria' },
+            'falangiti': { name: 'Falangiti macedoni', price: 60000, type: 'Centuria' },
+            'frombolieri': { name: 'Frombolieri delle Baleari', price: 45000, type: 'Centuria' },
+            
+            // Cavalleria
+            'numidi': { name: 'Cavalleria numida', price: 55000, type: 'Turma' },
+            'cavalleria-leggera': { name: 'Cavalleria leggera', price: 60000, type: 'Turma' },
+            'cavalleria-pesante': { name: 'Cavalleria pesante', price: 110000, type: 'Turma' },
+            'catafratti': { name: 'Cavalleria catafratta', price: 150000, type: 'Turma' },
+            'elefante': { name: 'Elefante da guerra', price: 500000, type: 'Singolo' },
+            
+            // Macchine d'assedio
+            'ariete': { name: 'Ariete', price: 175000, type: 'Macchina' },
+            'torre': { name: "Torre d'assedio", price: 225000, type: 'Macchina' },
+            'catapulta': { name: 'Catapulta', price: 190000, type: 'Macchina' },
+            'ballista': { name: 'Ballista', price: 190000, type: 'Macchina' },
+            
+            // Marina
+            'trasporto': { name: 'Nave da trasporto', price: 30000, type: 'Nave' },
+            'bireme': { name: 'Bireme', price: 130000, type: 'Nave' },
+            'trireme': { name: 'Trireme', price: 190000, type: 'Nave' },
+            'quadrireme': { name: 'Quadrireme', price: 300000, type: 'Nave' },
+            'quinquereme': { name: 'Quinquereme', price: 400000, type: 'Nave' }
+        };
+
+        // Stato corrente
+        let army = {};
+        let currentState = 'nessuno';
+        let allies = {
+            numidia: false,
+            baleari: false,
+            gallia: false,  // Galli sempre disponibili
+            grecia: false
+        };
+
+        // Inizializza
+        function initializeArmy() {
+            for (const unitId in units) {
+                army[unitId] = 0;
+                const input = document.getElementById(`qty-${unitId}`);
+                if (input) input.value = 0;
+                const total = document.getElementById(`total-${unitId}`);
+                if (total) total.textContent = '$0';
+            }
+        }
+
+        // Formatta numero
+        function formatNumber(num) {
+            return new Intl.NumberFormat('it-IT').format(num);
+        }
+
+        // Calcola totale
+        function calculateTotal() {
+            let totalCost = 0;
+            let totalUnits = 0;
+            
+            for (const unitId in army) {
+                const quantity = army[unitId];
+                if (quantity > 0) {
+                    totalCost += quantity * units[unitId].price;
+                    totalUnits += quantity;
+                }
+            }
+            
+            return { totalCost, totalUnits };
+        }
+
+        // Aggiorna summary
+        function updateSummary() {
+            const { totalCost, totalUnits } = calculateTotal();
+            const budget = parseInt(document.getElementById('budget').value) || 1000000;
+            const remaining = budget - totalCost;
+            const percentage = budget > 0 ? Math.round((totalCost / budget) * 100) : 0;
+            
+            document.getElementById('totalCost').textContent = `$${formatNumber(totalCost)}`;
+            document.getElementById('totalUnits').textContent = formatNumber(totalUnits);
+            document.getElementById('remainingBudget').textContent = `$${formatNumber(remaining)}`;
+            document.getElementById('spentPercentage').textContent = `${percentage}%`;
+            
+            const budgetStatus = document.getElementById('budgetStatus');
+            if (remaining >= 0) {
+                budgetStatus.textContent = `Aerarium rispettato ✓ ($${formatNumber(remaining)} disponibili)`;
+                budgetStatus.className = 'budget-status within';
+            } else {
+                budgetStatus.textContent = `Aerarium superato di $${formatNumber(Math.abs(remaining))}!`;
+                budgetStatus.className = 'budget-status exceeded';
+            }
+
+            updateUnitAvailability();
+        }
+
+        // Seleziona stato
+        function selectState(state) {
+            // Rimuovi selezione da tutti
+            document.querySelectorAll('.state-item').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Aggiungi selezione allo stato scelto
+            const stateElement = document.getElementById(`state-${state}`);
+            if (stateElement) {
+                stateElement.classList.add('selected');
+            }
+            currentState = state;
+            
+            updateUnitAvailability();
+        }
+
+        // Aggiorna alleati
+        function updateAllies() {
+            allies.numidia = document.getElementById('ally-numidia').checked;
+            allies.baleari = document.getElementById('ally-baleari').checked;
+            allies.gallia = document.getElementById('ally-gallia').checked;
+            allies.grecia = document.getElementById('ally-grecia').checked;
+            
+            updateUnitAvailability();
+        }
+
+        // Verifica se un'unità è disponibile
+        function isUnitAvailable(unitId) {
+            // Unità sempre disponibili
+            const alwaysAvailable = [
+                'milizia', 'fanteria-leggera', 'arcieri',
+                'cavalleria-leggera',
+                'ariete', 'torre', 'catapulta', 'ballista',
+                'trasporto', 'bireme', 'trireme', 'quadrireme', 'quinquereme'
+            ];
+            
+            if (alwaysAvailable.includes(unitId)) {
+                return true;
+            }
+            
+            switch(unitId) {
+                case 'fanteria-pesante':
+                    return currentState === 'roma' || allies.gallia || allies.grecia || currentState === 'cartagine';
+                    
+                case 'falangiti':
+                    return currentState === 'macedonia' || allies.grecia;
+                    
+                case 'frombolieri':
+                    return currentState === 'baleari' || currentState === 'cartagine' || allies.baleari;
+                    
+                case 'numidi':
+                    return currentState === 'numidia' || currentState === 'cartagine' || allies.numidia;
+                    
+                case 'cavalleria-pesante':
+                    return currentState === 'roma' || currentState === 'cartagine' || currentState === 'macedonia' || allies.gallia || allies.grecia;
+                    
+                case 'catafratti':
+                    return currentState === 'seleucidi';
+                    
+                case 'elefante':
+                    return currentState === 'cartagine' || currentState === 'seleucidi';
+                    
+                default:
+                    return false;
+            }
+        }
+
+        // Aggiorna disponibilità unità
+        function updateUnitAvailability() {
+            const unitsWithConditions = [
+                'fanteria-pesante', 'falangiti', 'frombolieri', 'numidi',
+                'cavalleria-pesante', 'catafratti', 'elefante'
+            ];
+            
+            unitsWithConditions.forEach(unitId => {
+                const badge = document.getElementById(`cond-${unitId}`);
+                const minusBtn = document.querySelector(`[onclick="changeQuantity('${unitId}', -1)"]`);
+                const plusBtn = document.querySelector(`[onclick="changeQuantity('${unitId}', 1)"]`);
+                const input = document.getElementById(`qty-${unitId}`);
+                
+                const available = isUnitAvailable(unitId);
+                
+                if (badge) {
+                    if (available) {
+                        badge.classList.add('condition-met');
+                        badge.classList.remove('condition-not-met');
+                        
+                        // Testo personalizzato
+                        if (unitId === 'fanteria-pesante') badge.textContent = '✅ Disponibile (Roma o alleati)';
+                        else if (unitId === 'falangiti') badge.textContent = '✅ Disponibile (Macedonia/Grecia)';
+                        else if (unitId === 'frombolieri') badge.textContent = '✅ Disponibile (Baleari/Cartagine)';
+                        else if (unitId === 'numidi') badge.textContent = '✅ Disponibile (Numidia/Cartagine)';
+                        else if (unitId === 'cavalleria-pesante') badge.textContent = '✅ Disponibile';
+                        else if (unitId === 'catafratti') badge.textContent = '✅ Disponibile (Seleucidi)';
+                        else if (unitId === 'elefante') badge.textContent = '✅ Disponibile (Cartagine/Seleucidi)';
+                    } else {
+                        badge.classList.add('condition-not-met');
+                        badge.classList.remove('condition-met');
+                        
+                        if (unitId === 'fanteria-pesante') badge.textContent = '❌ Richiede: Roma o alleati';
+                        else if (unitId === 'falangiti') badge.textContent = '❌ Richiede: Macedonia o Grecia';
+                        else if (unitId === 'frombolieri') badge.textContent = '❌ Richiede: Baleari o Cartagine';
+                        else if (unitId === 'numidi') badge.textContent = '❌ Richiede: Numidia o Cartagine';
+                        else if (unitId === 'cavalleria-pesante') badge.textContent = '❌ Richiede: Roma, Cartagine o alleati';
+                        else if (unitId === 'catafratti') badge.textContent = '❌ Richiede: Seleucidi';
+                        else if (unitId === 'elefante') badge.textContent = '❌ Richiede: Cartagine o Seleucidi';
+                    }
+                }
+                
+                if (minusBtn) minusBtn.disabled = !available;
+                if (plusBtn) plusBtn.disabled = !available;
+                if (input) input.disabled = !available;
+                
+                // Se l'unità diventa non disponibile, azzera la quantità
+                if (!available && army[unitId] > 0) {
+                    army[unitId] = 0;
+                    if (input) input.value = 0;
+                    updateUnitTotal(unitId);
+                }
+            });
+        }
+
+        // Cambia quantità
+        function changeQuantity(unitId, delta) {
+            const input = document.getElementById(`qty-${unitId}`);
+            if (!input || input.disabled) return;
+            
+            let currentValue = parseInt(input.value) || 0;
+            let newValue = currentValue + delta;
+            
+            if (newValue < 0) newValue = 0;
+            
+            input.value = newValue;
+            army[unitId] = newValue;
+            updateUnitTotal(unitId);
+            updateSummary();
+        }
+
+        // Aggiorna totale unità
+        function updateUnitTotal(unitId) {
+            const input = document.getElementById(`qty-${unitId}`);
+            if (!input) return;
+            
+            const quantity = parseInt(input.value) || 0;
+            army[unitId] = quantity;
+            
+            const unitTotal = quantity * units[unitId].price;
+            const totalElement = document.getElementById(`total-${unitId}`);
+            if (totalElement) {
+                totalElement.textContent = `$${formatNumber(unitTotal)}`;
+            }
+            updateSummary();
+        }
+
+        // Azzera tutto
+        function clearAll() {
+            for (const unitId in units) {
+                army[unitId] = 0;
+                const input = document.getElementById(`qty-${unitId}`);
+                if (input) input.value = 0;
+                const totalElement = document.getElementById(`total-${unitId}`);
+                if (totalElement) totalElement.textContent = '$0';
+            }
+            updateSummary();
+        }
+
+        // COPIA ESERCITO (stile richiesto)
+        function copyArmyToClipboard() {
+            const { totalCost, totalUnits } = calculateTotal();
+            const budget = parseInt(document.getElementById('budget').value) || 1000000;
+            const remaining = budget - totalCost;
+            
+            let armyText = `=== Seconda guerra punica ===\n\n`;
+            armyText += `Anno: 217 a.C.\n`;
+            armyText += `Aerarium: $${formatNumber(budget)}\n`;
+            armyText += `Costo Totale: $${formatNumber(totalCost)}\n`;
+            armyText += `Unità Totali: ${totalUnits}\n`;
+            armyText += `Aerarium Rimanente: $${formatNumber(remaining)}\n\n`;
+            armyText += `=== COMPOSIZIONE ESERCITO ===\n\n`;
+            
+            armyText += `Fanteria:\n`;
+            if (army['milizia'] > 0) armyText += `  Milizia cittadina: ${army['milizia']} Centuria - $${formatNumber(army['milizia'] * 20000)}\n`;
+            if (army['fanteria-leggera'] > 0) armyText += `  Fanteria leggera: ${army['fanteria-leggera']} Centuria - $${formatNumber(army['fanteria-leggera'] * 35000)}\n`;
+            if (army['fanteria-pesante'] > 0) armyText += `  Fanteria pesante: ${army['fanteria-pesante']} Centuria - $${formatNumber(army['fanteria-pesante'] * 50000)}\n`;
+            if (army['arcieri'] > 0) armyText += `  Arcieri: ${army['arcieri']} Centuria - $${formatNumber(army['arcieri'] * 45000)}\n`;
+            if (army['falangiti'] > 0) armyText += `  Falangiti macedoni: ${army['falangiti']} Centuria - $${formatNumber(army['falangiti'] * 60000)}\n`;
+            if (army['frombolieri'] > 0) armyText += `  Frombolieri delle Baleari: ${army['frombolieri']} Centuria - $${formatNumber(army['frombolieri'] * 45000)}\n`;
+            
+            armyText += `\nCavalleria:\n`;
+            if (army['numidi'] > 0) armyText += `  Cavalleria numida: ${army['numidi']} Turma - $${formatNumber(army['numidi'] * 55000)}\n`;
+            if (army['cavalleria-leggera'] > 0) armyText += `  Cavalleria leggera: ${army['cavalleria-leggera']} Turma - $${formatNumber(army['cavalleria-leggera'] * 60000)}\n`;
+            if (army['cavalleria-pesante'] > 0) armyText += `  Cavalleria pesante: ${army['cavalleria-pesante']} Turma - $${formatNumber(army['cavalleria-pesante'] * 110000)}\n`;
+            if (army['catafratti'] > 0) armyText += `  Cavalleria catafratta: ${army['catafratti']} Turma - $${formatNumber(army['catafratti'] * 150000)}\n`;
+            if (army['elefante'] > 0) armyText += `  Elefante da guerra: ${army['elefante']} Singolo - $${formatNumber(army['elefante'] * 500000)}\n`;
+            
+            armyText += `\nMacchine d'assedio:\n`;
+            if (army['ariete'] > 0) armyText += `  Ariete: ${army['ariete']} Macchina - $${formatNumber(army['ariete'] * 175000)}\n`;
+            if (army['torre'] > 0) armyText += `  Torre d'assedio: ${army['torre']} Macchina - $${formatNumber(army['torre'] * 225000)}\n`;
+            if (army['catapulta'] > 0) armyText += `  Catapulta: ${army['catapulta']} Macchina - $${formatNumber(army['catapulta'] * 190000)}\n`;
+            if (army['ballista'] > 0) armyText += `  Ballista: ${army['ballista']} Macchina - $${formatNumber(army['ballista'] * 190000)}\n`;
+            
+            armyText += `\nMarina militare:\n`;
+            if (army['trasporto'] > 0) armyText += `  Nave da trasporto: ${army['trasporto']} Nave - $${formatNumber(army['trasporto'] * 30000)}\n`;
+            if (army['bireme'] > 0) armyText += `  Bireme: ${army['bireme']} Nave - $${formatNumber(army['bireme'] * 130000)}\n`;
+            if (army['trireme'] > 0) armyText += `  Trireme: ${army['trireme']} Nave - $${formatNumber(army['trireme'] * 190000)}\n`;
+            if (army['quadrireme'] > 0) armyText += `  Quadrireme: ${army['quadrireme']} Nave - $${formatNumber(army['quadrireme'] * 300000)}\n`;
+            if (army['quinquereme'] > 0) armyText += `  Quinquereme: ${army['quinquereme']} Nave - $${formatNumber(army['quinquereme'] * 400000)}\n`;
+            
+            navigator.clipboard.writeText(armyText).then(() => {
+                alert('✅ Esercito copiato negli appunti!');
+            }).catch(err => {
+                console.error('Errore nella copia:', err);
+                alert('❌ Errore nella copia');
+            });
+        }
+
+        // Event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeArmy();
+            updateSummary();
+            
+            // Checkbox Galli sempre disponibile (lasciamo spuntabile ma non influisce sulle condizioni)
+            document.getElementById('ally-gallia').addEventListener('change', function() {
+                allies.gallia = this.checked;
+                updateUnitAvailability();
+            });
+            
+            document.getElementById('updateBtn').addEventListener('click', updateSummary);
+            document.getElementById('clearBtn').addEventListener('click', clearAll);
+            document.getElementById('budget').addEventListener('change', updateSummary);
+            document.getElementById('budget').addEventListener('input', updateSummary);
+            
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const unitId = this.id.replace('qty-', '');
+                    updateUnitTotal(unitId);
+                });
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Esponi funzioni globali
+        window.changeQuantity = changeQuantity;
+        window.updateUnitTotal = updateUnitTotal;
+        window.selectState = selectState;
+        window.updateAllies = updateAllies;
+        window.copyArmyToClipboard = copyArmyToClipboard;
+        window.clearAll = clearAll;
+    </script>
+</body>
+</html>
